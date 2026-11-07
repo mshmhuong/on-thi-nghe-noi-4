@@ -1123,7 +1123,8 @@ const ALLW=(()=>{const base=UNITS.flatMap(u=>u.vocab.map(r=>({u:u.n,w:r[0],ipa:r
 const known=()=>store.get('known',{});
 const views={};
 const header=()=>{const tabs=[['home','Lịch ôn'],['final','Đề cuối kỳ'],['mock','Luyện thi nói'],['learn','Bài học'],['vocab','Từ vựng'],['cards','Flashcard'],['quiz','Câu hỏi ôn'],['listen','Luyện nghe'],['key','Key Points']];
-  $('#tabs').innerHTML=tabs.map(([k,l])=>`<button id="tab-${k}" data-go="${k}" class="tab" type="button">${l}</button>`).join('')};
+  $('#tabs').innerHTML=tabs.map(([k,l])=>`<button id="tab-${k}" data-go="${k}" class="tab" type="button">${l}</button>`).join('');
+  $('#tabs').insertAdjacentHTML('beforeend',`<label class="aprate" style="margin-left:8px">Giọng <select data-ap="voice" aria-label="Chọn giọng đọc"><option value="f"${store.get('voice','f')==='f'?' selected':''}>Nữ</option><option value="m"${store.get('voice','f')==='m'?' selected':''}>Nam</option></select></label>`)};
 function go(v,arg){const name=views[v]?v:'home';store.set('view',name);
   $$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.go===name?'page':'false'));
   clearInterval(window._timer);window._mockStop&&window._mockStop();AP.id++;AP.on=false;AP.box=null;try{speechSynthesis.cancel();speakId++}catch(e){}
@@ -1311,13 +1312,14 @@ function session(box,x,part,qi){
   const hideOut=store.get('hideOut',false);
   box.innerHTML=`<section class="card"><h3>${esc(x.q)}</h3><span class="vi">${esc(VIF[part][qi].q)}</span>
    <div class="seg"><button class="chip" type="button" data-m="free" aria-pressed="${!read}">Nói tự do (như thi thật)</button><button class="chip" type="button" data-m="read" aria-pressed="${read}">Đọc theo bài mẫu (máy chỉ chỗ sai)</button></div>
-   ${read?`<p class="note">Chị đọc to cả bài mẫu bên dưới. Máy nghe từng từ, so với bài mẫu, rồi tô <span class="w-ok">xanh</span> chỗ đúng, <span class="w-bad">đỏ</span> chỗ sai, <span class="w-miss">gạch ngang</span> chỗ bỏ sót.</p><div class="seg">${vers.map((s,k)=>`<button class="chip" type="button" data-v="${k}" aria-pressed="${k===ver}">Bản ${k+1}</button>`).join("")}</div><div class="sample"><p class="pr-sent" id="refx">${esc(refText)}</p><p class="vi">${esc(vers[ver].v)}</p><p class="row" style="margin:6px 0"><button class="btn ghost" type="button" data-say="${esc(refText)}">🔊 Nghe giọng mẫu trước</button></p></div>`
+   ${read?`<p class="note">Chị đọc to cả bài mẫu bên dưới. Máy nghe từng từ, so với bài mẫu, rồi tô <span class="w-ok">xanh</span> chỗ đúng, <span class="w-bad">đỏ</span> chỗ sai, <span class="w-miss">gạch ngang</span> chỗ bỏ sót.</p><div class="seg">${vers.map((s,k)=>`<button class="chip" type="button" data-v="${k}" aria-pressed="${k===ver}">Bản ${k+1}</button>`).join("")}</div><div class="sample"><p class="pr-sent" id="refx">${esc(refText)}</p><p class="vi">${esc(vers[ver].v)}</p><p class="note"><b>🔊 Nghe giọng mẫu trước</b> (bài mẫu tua được từng câu):</p>${apHTML(refText,true)}</div>`
    :`<label class="toggle noprint"><input type="checkbox" id="ho" ${hideOut?'checked':''}> Giấu dàn ý và từ gợi ý (như thi thật)</label><div id="hint" class="${hideOut?'hide':''}"><p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ gợi ý:</b> ${esc(x.words)}</p></div>
+   <details class="noprint" style="margin:8px 0"><summary><b>🔊 Nghe bài mẫu</b> (Bản ${ver+1}, tua được từng câu)</summary>${apHTML(refText,false)}</details>
    ${prep?`<div id="prepbox"><p class="note">Chuẩn bị 1 phút. Ghi nhanh dàn ý (không dùng slide).</p><textarea id="notes" rows="4" placeholder="Mở bài... Ý 1... Ý 2... Kết bài..."></textarea></div>`:''}`}
    <div class="big-t" id="clock">${fmt(t)}</div><div class="meter hide" id="mtrw"><i id="mtrl"></i></div><p class="note" id="st"></p><p class="pr-live" id="live"></p>
    <div class="row"><button class="btn" type="button" id="go">${prep?'Bắt đầu chuẩn bị':'Bắt đầu nói'}</button><button class="btn ghost hide" type="button" id="stop">Dừng</button></div>
    <div id="res"></div></section>`;
-  const clock=$('#clock'),st=$('#st'),goB=$('#go'),stopB=$('#stop'),live=$('#live');
+  const clock=$('#clock'),st=$('#st'),goB=$('#go'),stopB=$('#stop'),live=$('#live');goB.addEventListener('click',()=>apStop());
   $$('[data-m]',box).forEach(b=>b.onclick=()=>{if(stage==='speak'||stage==='prepping')return;store.set('mmode',b.dataset.m);window._mockStop&&window._mockStop();session(box,x,part,qi)});
   $$('[data-v]',box).forEach(b=>b.onclick=()=>{if(stage==='speak'||stage==='prepping')return;store.set('mver',+b.dataset.v);window._mockStop&&window._mockStop();session(box,x,part,qi)});
   const ho=$('#ho');if(ho)ho.onchange=()=>{store.set('hideOut',ho.checked);$('#hint').classList.toggle('hide',ho.checked)};
