@@ -1,0 +1,814 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}</style></head><body>
+<title>Ôn thi Nghe Nói 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+
+/* Bố cục: một vở bài tập có đường kẻ xanh và mực chấm đỏ của giáo viên, một cột đọc, tab cố định ở trên */
+:root{--paper:#f3f6f9;--sheet:#ffffff;--ink:#17283c;--muted:#566779;--rule:#d5dfe9;--blue:#1d5c8f;--blue-soft:#e3eef7;--red:#b83a2e;--red-soft:#fbe9e6;--green:#23744f;--green-soft:#e2f2ea;
+--ui:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;--read:"Source Serif 4",Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121a23;--sheet:#1a2531;--ink:#e6edf4;--muted:#9fb0c1;--rule:#31414f;--blue:#7ab7e6;--blue-soft:#20384c;--red:#ef8d80;--red-soft:#43241f;--green:#74cda4;--green-soft:#1c3a2d;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121a23;--sheet:#1a2531;--ink:#e6edf4;--muted:#9fb0c1;--rule:#31414f;--blue:#7ab7e6;--blue-soft:#20384c;--red:#ef8d80;--red-soft:#43241f;--green:#74cda4;--green-soft:#1c3a2d;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--ui);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sheet)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--sheet);border-bottom:2px solid var(--blue);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{max-width:880px;margin:auto;display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;padding-block:8px}
+.brand{font-weight:700;color:var(--blue);margin-right:auto}
+#tabs{display:flex;gap:2px;overflow-x:auto;max-width:100%}
+.tab{font:500 14px var(--ui);color:var(--muted);background:none;border:0;padding:6px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.tab[aria-current="page"]{color:var(--blue);background:var(--blue-soft);font-weight:600}
+main{max-width:880px;margin:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+h1{font-size:28px;line-height:1.25;margin:8px 0;text-wrap:balance}h2{font-size:20px;margin:32px 0 8px}h3{font-size:16px;margin:0 0 6px}h4{font-size:15px;margin:16px 0 4px}
+.sub,.note{color:var(--muted);margin:4px 0 12px}.intro p{max-width:65ch;color:var(--muted);margin:0}
+.en{font-family:var(--read);font-size:17px;margin:4px 0;display:block}
+.vi{color:var(--muted);font-size:14.5px;margin:2px 0 8px;display:block}
+.noVi .vi{display:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);border-radius:8px;background:var(--sheet);margin-top:16px}
+.stats div{padding:12px;border-left:1px solid var(--rule)}.stats div:first-child{border:0}
+.stats b{display:block;font-size:22px;color:var(--blue);font-variant-numeric:tabular-nums}.stats span{font-size:13px;color:var(--muted)}
+.plan{list-style:none;padding:0;margin:0;background:var(--sheet);border:1px solid var(--rule);border-radius:8px}
+.plan li{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid var(--rule)}.plan li:first-child{border:0}
+.plan label{display:flex;gap:10px;align-items:flex-start;flex:1 1 320px;min-width:0;cursor:pointer}.plan small{display:block;color:var(--muted);font-size:13.5px}
+.plan li.ok b{color:var(--green)}.plan-go{display:flex;gap:10px;flex-wrap:wrap}
+.tips{padding-left:20px;margin:0}
+.link{background:none;border:0;color:var(--blue);font:500 14px var(--ui);padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.btn{font:600 15px var(--ui);padding:9px 16px;border-radius:7px;border:1px solid var(--blue);background:var(--blue);color:var(--sheet);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--blue)}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.units,.seg{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{font:500 14px var(--ui);padding:5px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.card ul{margin:0;padding-left:18px}.learn{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px;align-items:start}
+.tw{overflow-x:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:8px}
+table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;padding:8px 10px;border-top:1px solid var(--rule);font-size:14.5px}th{border:0;color:var(--muted);font-weight:600;font-size:13px}
+.vt{min-width:760px}.num{font-variant-numeric:tabular-nums}.ipa{font-family:"Segoe UI","Noto Sans",Arial,sans-serif;color:var(--blue);white-space:nowrap}
+.fam{display:block;color:var(--muted);font-size:12.5px}.vt .en{font-size:15px}.vt .vi{font-size:13.5px;margin:0}
+.say{border:1px solid var(--rule);background:var(--sheet);color:var(--blue);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:11px}
+.search,textarea{width:100%;font:400 16px var(--ui);padding:9px 11px;border:1px solid var(--rule);border-radius:7px;background:var(--sheet);color:var(--ink);margin:6px 0}
+textarea{font-family:var(--read);line-height:1.6;background-image:repeating-linear-gradient(transparent,transparent 27px,var(--rule) 27px,var(--rule) 28px);background-attachment:local;line-height:28px;padding-top:0}
+.wc{font-size:13px;color:var(--muted);text-align:right}
+.flash{display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;width:100%;min-height:220px;padding:20px;background:var(--sheet);border:1px solid var(--rule);border-radius:10px;color:var(--ink);cursor:pointer;font:inherit}
+.fw{font:600 34px var(--read)}.fv{font-size:21px;font-weight:600;color:var(--blue)}.qline{font-size:19px}
+.opts{display:grid;gap:6px;margin:6px 0}.opt{text-align:left;font:400 15.5px var(--ui);padding:9px 12px;border:1px solid var(--rule);border-radius:7px;background:var(--sheet);color:var(--ink);cursor:pointer}
+.opt.right{background:var(--green-soft);border-color:var(--green)}.opt.wrong{background:var(--red-soft);border-color:var(--red)}
+.optl{display:flex;gap:8px;align-items:flex-start;padding:5px 8px;border-radius:6px;cursor:pointer;font-family:var(--read);font-size:16.5px}.optl:hover{background:var(--blue-soft)}.optl input{margin-top:6px}
+.sec{margin-top:24px}.sec h3{font-size:16px;color:var(--blue)}
+.passage{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;margin:10px 0}.passage h4{font-family:var(--read);font-size:19px;margin:0 0 6px;text-align:center}
+.q{padding:10px 0;border-top:1px solid var(--rule)}.stem{font-family:var(--read);font-size:17px;margin:0}
+.q.isok .stem b{color:var(--green)}.q.isno .stem b{color:var(--red)}
+.ans{background:var(--blue-soft);padding:8px 12px;border-radius:6px;margin-top:6px;font-size:15px}.ans .en{font-size:16px}.why{margin:4px 0 0;color:var(--muted);font-size:14px}.q.isno .ans{background:var(--red-soft)}.q.isok .ans{background:var(--green-soft)}
+.score{font-weight:600;color:var(--blue);font-size:17px}.good{color:var(--green)}.bad{color:var(--red)}
+.toggle{display:inline-flex;gap:6px;align-items:center;font-size:14.5px;cursor:pointer}
+.essay{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:8px 0}.essay summary{cursor:pointer;display:flex;gap:10px;align-items:flex-start}.essay summary small{display:block;color:var(--muted)}.essay summary b{font-family:var(--read);font-size:16.5px;display:block}
+.tag{flex:none;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--blue-soft);color:var(--blue);white-space:nowrap}.tag.hot{background:var(--red-soft);color:var(--red)}
+.mocks{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}.mockb{text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:14px;cursor:pointer;color:var(--ink);font:inherit;display:grid;gap:4px}.mockb b{font-size:18px;color:var(--blue)}.mockb small{color:var(--muted)}
+.timer{position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px);z-index:4;float:right;display:flex;gap:10px;align-items:center;background:var(--sheet);border:1px solid var(--rule);padding:4px 12px;border-radius:999px}.timer b{font-size:18px;font-variant-numeric:tabular-nums;color:var(--blue)}.timer.low b{color:var(--red)}
+.tstat{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;font-size:14.5px}
+.chat{display:grid;gap:8px;margin:12px 0}.bub{max-width:88%;padding:9px 13px;border-radius:10px;border:1px solid var(--rule);background:var(--sheet);min-width:0;justify-self:start}.bub.u{justify-self:end;background:var(--blue-soft);border-color:var(--blue-soft)}.bub.m{background:var(--green-soft);border-color:var(--green-soft)}.bub small{color:var(--muted);display:block}.bub .vi{margin-bottom:2px}.bub .seg{margin:6px 0 0}.thintl{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
+.bub,.card{scroll-margin-bottom:220px}.tctl[hidden]{display:none}.tctl{position:sticky;bottom:0;background:var(--paper);padding-block:10px;border-top:1px solid var(--rule);display:grid;gap:6px}.tform{display:flex;gap:8px;align-items:center}.tform .search{margin:0;min-width:0;flex:1}
+.mic{font:600 17px var(--ui);width:100%;padding:14px;border-radius:8px;border:1px solid var(--blue);background:var(--blue);color:var(--sheet);cursor:pointer}.mic.on{background:var(--red);border-color:var(--red)}.mic:disabled{opacity:.6;cursor:wait}.tctl .note,.tctl .seg{margin:0}
+.pr-sent{font-family:var(--read);font-size:21px;line-height:1.7;margin:4px 0}.pr-live{font-family:var(--read);color:var(--muted);min-height:1.6em;margin:6px 0}
+.w-ok{color:var(--green)}.w-bad{color:var(--red);font-weight:600;text-decoration:underline wavy;text-underline-offset:4px}.w-miss{color:var(--red);background:var(--red-soft);border-radius:3px;text-decoration:line-through}
+.pr-res{border-top:1px solid var(--rule);margin-top:12px;padding-top:10px}.pr-pct{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}.pr-fix{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}.pr-fix li{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}.pr-fix small{color:var(--muted)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (max-width:480px){h1{font-size:24px}.stats b{font-size:19px}}
+
+.opts{display:grid;gap:6px;margin:8px 0}
+.opt{text-align:left;font:400 15px var(--ui);padding:8px 12px;border-radius:7px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer}
+.opt[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-soft)}
+.opt.ok{border-color:var(--green);background:var(--green-soft)}.opt.no{border-color:var(--red);background:var(--red-soft)}
+.qb{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;margin:10px 0}
+.qb.isok{border-left:4px solid var(--green)}.qb.isno{border-left:4px solid var(--red)}
+.qn{color:var(--muted);font-size:13px;font-weight:600}
+.blank{width:120px;display:inline-block;font:400 16px var(--read);padding:2px 6px;border:0;border-bottom:2px solid var(--blue);background:var(--blue-soft);color:var(--ink);border-radius:4px 4px 0 0;margin:0 2px}
+.blank.ok{border-color:var(--green);background:var(--green-soft)}.blank.no{border-color:var(--red);background:var(--red-soft)}
+.flash{min-height:220px;display:grid;place-items:center;text-align:center;background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:24px;cursor:pointer;margin:12px 0}
+.flash .big{font:600 30px var(--read)}
+.stage{display:flex;gap:6px;margin:8px 0;flex-wrap:wrap}
+.kp li{margin:4px 0}
+.hide{display:none!important}
+.big-t{font:700 40px var(--ui);font-variant-numeric:tabular-nums;color:var(--blue)}
+.big-t.low{color:var(--red)}
+.sample{background:var(--blue-soft);border-radius:8px;padding:10px 14px;margin:8px 0}
+.warn{background:var(--red-soft);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14.5px}
+.rng{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;margin:6px 0}
+.rng input{width:100%}
+.w-close{color:var(--ink);background:#fdf1d2;border-radius:3px;text-decoration:underline dotted;text-underline-offset:4px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .w-close{background:#4a3d16}}
+.meter{height:10px;background:var(--rule);border-radius:99px;overflow:hidden;margin:6px 0}.meter i{display:block;height:100%;width:0;background:var(--green);transition:width .1s}
+.strip{display:flex;height:22px;border-radius:5px;overflow:hidden;margin:8px 0 2px;background:var(--rule);gap:1px}.strip i{display:block;cursor:pointer;min-width:1px}.strip i.s{background:var(--green)}.strip i.q{background:var(--rule)}.strip i.p{background:var(--red)}
+.crit{display:grid;gap:10px;margin:8px 0}.crit .rng{margin:0}.crit .bar{height:8px;background:var(--rule);border-radius:99px;overflow:hidden}.crit .bar i{display:block;height:100%;background:var(--blue)}
+.vi-show .vi{display:block}.tag.sm{font-size:11px}
+.essay .vi{margin-top:2px}.opt .vi{margin:2px 0 0}
+@media print{header,.row,.units,.noprint{display:none!important}body{background:#fff}.card{break-inside:avoid}}
+</style>
+<header><div class="top"><span class="brand">Ôn thi Nghe Nói 4</span><nav id="tabs" aria-label="Các mục"></nav></div></header>
+<main id="main"></main>
+<script>
+// Nội dung ôn thi Nghe Nói 4 - bám theo video bài giảng và buổi ôn cuối kỳ của cô
+const UNITS=[
+{n:1,title:"Language and identity",vi:"Ngôn ngữ và bản sắc",q:"How does language affect who we are?",
+ skills:[
+  ["Ghi chú theo mốc thời gian (note-taking)","Bài nói theo thứ tự thời gian thì vẽ một đường thời gian: một bên ghi từ chỉ thời gian, bên kia ghi sự kiện chính. Từ hay gặp: in the beginning, later, before, during that time, soon, after that, in a specific year, at last, on (a day)."],
+  ["Kỹ năng nghe: suy luận (making inferences)","Người nói thường không nói thẳng. Mình rút ra kết luận hợp lý từ điều họ nói, nhưng không suy luận quá đà. Muốn chắc thì hỏi lại: Do you mean that...? Are you saying that...?"],
+  ["Ngữ pháp: câu bị động (passive voice)","Dạng: be + quá khứ phân từ (was damaged, has been studied, will be given, may be reviewed). Dùng khi muốn nhấn vào đối tượng, hoặc không biết/không cần nói ai làm. Động từ không có tân ngữ như happen thì không dùng bị động. Nói chuyện hằng ngày đừng lạm dụng bị động, nghe sẽ cứng."],
+  ["Kỹ năng nói: so sánh ví von (simile) và ẩn dụ (metaphor)","Simile dùng like hoặc as: as busy as a bee, swim like a fish, sleep like a log, as light as a feather, run like the wind, cry like a baby, cut me like a knife, as quiet as a mouse. Metaphor nói một thứ là thứ khác, không dùng like hay as: His words were knives. My computer is a dinosaur. Her sunny face lit up the room."],
+  ["Bài nói cuối Unit (assignment)","Kể một trải nghiệm cá nhân về khó khăn hoặc thành công với ngôn ngữ. Dùng đường thời gian để sắp xếp sự kiện và cảm xúc, có lời tả sinh động. Mẫu trong sách: Maxine Hong Kingston kể nỗi sợ khi phải đọc bài bằng tiếng Anh trước lớp."]
+ ],
+ key:[
+  ["Listening 1: Jill Bolte Taylor, My Stroke of Insight","Bà là nhà giải phẫu thần kinh, bị đột quỵ năm 1996. Não phải nhìn bức tranh lớn, làm mờ ranh giới giữa các thứ, cho cảm nhận tổng thể, sống ở hiện tại. Não trái nhặt chi tiết, gắn nhãn bằng ngôn ngữ, so với điều đã học trong quá khứ và hình dung về tương lai."],
+  ["Listening 2: Helen Keller, The Story of My Life","Mất thị giác và thính giác lúc 19 tháng tuổi. Tháng đầu sau bệnh: dùng dấu hiệu (pull là đến, push là đi). Trước khi cô giáo đến: biết mình khác mọi người, bực bội, giận dữ, như con tàu trong sương dày. 3/3/1887 cô giáo đến. Sáng hôm sau học chữ doll nhưng chưa hiểu nghĩa. Mùa hè 1887: hiểu mọi vật đều có tên (water)."],
+  ["Phát triển ngôn ngữ ở trẻ nhỏ (bài ghi chú theo thời gian)","Năm đầu: trẻ học từ bằng cách nghe cha mẹ lặp lại. 15 đến 24 tháng: học ngôn ngữ nhanh nhất. 18 tháng: biết khoảng 50 từ. 24 tháng: dùng 250 đến 300 từ. Sáu tháng sau: số từ gần gấp đôi."]
+ ],
+ vocab:[
+  ["boundary","/ˈbaʊndri/","n","ranh giới","Language can be a boundary between cultures."],
+  ["consciousness","/ˈkɑːnʃəsnəs/","n","ý thức, sự tỉnh táo","A stroke can make a person lose consciousness."],
+  ["external","/ɪkˈstɜːrnl/","adj","bên ngoài","Culture is an external factor in language learning."],
+  ["fascinating","/ˈfæsɪneɪtɪŋ/","adj","hấp dẫn, rất thú vị","The way the brain handles language is fascinating."],
+  ["function","/ˈfʌŋkʃn/","n","chức năng","What is the function of each part of the brain?"],
+  ["insight","/ˈɪnsaɪt/","n","sự thấu hiểu sâu","The book gives insight into life after a stroke."],
+  ["overall","/ˌoʊvərˈɔːl/","adj","tổng thể, nhìn chung","The overall result was good."],
+  ["perception","/pərˈsepʃn/","n","nhận thức, cách nhìn","Our perception of colors differs from an animal’s."],
+  ["recovery","/rɪˈkʌvəri/","n","sự hồi phục","Her recovery took eight years."],
+  ["regain","/rɪˈɡeɪn/","v","lấy lại","He worked hard to regain his speech."],
+  ["structure","/ˈstrʌktʃər/","n","cấu trúc","The structure of the brain is complex."],
+  ["tranquil","/ˈtræŋkwɪl/","adj","yên bình","A tranquil place helps me study."],
+  ["adequate","/ˈædɪkwət/","adj","đầy đủ, đủ dùng","The teacher gave an adequate explanation."],
+  ["gesture","/ˈdʒestʃər/","n, v","cử chỉ, ra hiệu","He used a gesture to get their attention."],
+  ["incident","/ˈɪnsɪdənt/","n","sự việc","The incident was reported to the police."],
+  ["intense","/ɪnˈtens/","adj","mạnh, dữ dội","The debate was quite intense."],
+  ["invariably","/ɪnˈveriəbli/","adv","luôn luôn, lần nào cũng vậy","She invariably arrives early."],
+  ["outburst","/ˈaʊtbɜːrst/","n","cơn bộc phát","His angry outburst surprised everyone."],
+  ["persist","/pərˈsɪst/","v","kiên trì","She persisted in learning English."],
+  ["reveal","/rɪˈviːl/","v","cho thấy, tiết lộ","The study revealed big differences."],
+  ["sentiment","/ˈsentɪmənt/","n","cảm xúc, quan điểm","There was a sentiment of optimism in the group."]
+ ]},
+{n:2,title:"Behavioral science: work and fun",vi:"Khoa học hành vi: công việc và vui chơi",q:"What is the tipping point between work and fun?",
+ skills:[
+  ["Ghi chú bằng biểu đồ Venn (note-taking)","Tìm mối quan hệ giữa các mục là kỹ năng tư duy phản biện quan trọng khi ghi chú. Biểu đồ Venn có hai vòng tròn chồng lên nhau: phần chung ở giữa là điểm giống, hai phần ngoài là điểm khác. Hợp khi bài giảng cần so sánh hai thứ (ví dụ nấu ăn làm sở thích và nấu ăn làm nghề)."],
+  ["Kỹ năng nghe: nghe ví dụ (listening for examples)","Cụm báo hiệu ví dụ: for example, for instance, take… as an example, let me give you an example, including, such as. Khi người nói liệt kê ví dụ, họ lên giọng ở từng mục trừ mục cuối: lên giọng nghĩa là chưa nói xong. Cách ghi: ý chính bên trái, ví dụ bên phải."],
+  ["Phát âm: ngữ điệu khi nêu lựa chọn","Câu nêu lựa chọn: lên giọng ở âm nhấn của mỗi lựa chọn, hạ giọng ở or, câu kết thúc xuống giọng. Câu hỏi lựa chọn: lên giọng ở mỗi lựa chọn, hạ giọng ở or, rồi lên giọng ở mục cuối, hoặc lên rồi xuống nếu mục cuối kết thúc bằng âm nhấn."],
+  ["Ngữ pháp: so sánh (comparisons)","Danh từ: more perks than, fewer perks than, less time than, many more/many fewer perks than, much less time than, as many perks as, as much time as. Động từ: gains more than, gains less than, gains much more than, gains as much as. Tính từ: clearer than, much clearer than, less aware than, as productive as. So sánh phải cùng loại: the office in China had more employees than the office in India (không so với đất nước India)."],
+  ["Kỹ năng nói: sở thích và lựa chọn (preferences)","Sở thích trong quá khứ: prefer + danh từ, choose + to-V, first/second choice was + to-V, had hoped + to-V. Sở thích hiện tại: my preference is to + V, I’d rather (not) + V, If it were up to me, I like A more than B, I’d like to + V."],
+  ["Bài nói cuối Unit (assignment)","Làm việc nhóm, thảo luận một hoạt động hoặc công việc vừa có phần vui vừa có phần vất vả (ví dụ kỳ nghỉ kết hợp làm tình nguyện), rồi trình bày."]
+ ],
+ key:[
+  ["Listening 1: Google và Bloomberg","Hai video: ở Google, bộ phận people operations dùng dữ liệu (data mining) để cải thiện nơi làm việc. Ở Bloomberg, một quản lý sản phẩm hỏi đồng nghiệp về môi trường làm việc. Câu hỏi chung: đâu là điểm chuyển giữa làm việc và vui chơi."],
+  ["Du học và thực tập (cố vấn đại học)","Chương trình du học vẫn đóng học phí ở trường mình. Thực tập thì không đóng học phí, thường còn có lương nhỏ. Cả hai đều vui, có trải nghiệm mới, nhưng cũng vất vả: du học phải học và giao tiếp bằng ngoại ngữ, thực tập có sếp và việc có thể khó hơn."],
+  ["Ví dụ trong bài nghe","Thực tập có lợi: biết công ty, môi trường văn phòng, phúc lợi (perks) như đồ ăn miễn phí hay chỗ làm riêng. Kỳ nghỉ làm tình nguyện: giúp người khác, đi nhiều nơi, học kỹ năng mới như xây trường."]
+ ],
+ vocab:[
+  ["broadcast","/ˈbrɔːdkæst/","v, n","phát sóng","The show is broadcast every night."],
+  ["chaotic","/keɪˈɑːtɪk/","adj","hỗn loạn","The office was chaotic before the deadline."],
+  ["collision","/kəˈlɪʒn/","n","va chạm","A collision happened at the corner."],
+  ["data mining","/ˈdeɪtə ˈmaɪnɪŋ/","n","khai thác dữ liệu","Data mining helps companies understand their workers."],
+  ["extend","/ɪkˈstend/","v","kéo dài, mở rộng","They extended the project by two weeks."],
+  ["intervention","/ˌɪntərˈvenʃn/","n","sự can thiệp","The manager’s intervention solved the problem."],
+  ["overwhelming","/ˌoʊvərˈwelmɪŋ/","adj","quá tải, áp đảo","The amount of work was overwhelming."],
+  ["privilege","/ˈprɪvəlɪdʒ/","n","đặc quyền","Free lunch is a privilege for staff."],
+  ["productive","/prəˈdʌktɪv/","adj","năng suất","I am more productive in the morning."],
+  ["ultimately","/ˈʌltɪmətli/","adv","cuối cùng, rốt cuộc","Ultimately, the choice is yours."],
+  ["unconventional","/ˌʌnkənˈvenʃənl/","adj","khác thường","Their unconventional office has no desks."],
+  ["layout","/ˈleɪaʊt/","n","cách bố trí","The office layout encourages teamwork."],
+  ["perk","/pɜːrk/","n","phúc lợi, quyền lợi thêm","Free snacks are a popular perk."]
+ ]},
+{n:3,title:"Ecology: visual deception",vi:"Sinh thái: đánh lừa thị giác",q:"How can the eyes deceive the mind?",
+ skills:[
+  ["Ghi chú: dùng kiến thức nền để chuẩn bị (note-taking)","Trước khi nghe, nghĩ về điều mình đã biết để dự đoán người nói sẽ nói gì. Khi nghe, so sánh: khớp thì củng cố, khác thì đặt câu hỏi và học thêm. Cách chuẩn bị: đọc tài liệu cô giao, xem lại ghi chú các buổi trước, trao đổi với bạn, nghĩ về tiêu đề, ghi vài từ khóa vào sơ đồ, viết vài câu hỏi và chừa chỗ ghi câu trả lời. Bước đầu tiên trong bài: đọc tài liệu được giao trước buổi giảng."],
+  ["Kỹ năng nghe: nhận ra đồng vị ngữ (appositives)","Đồng vị ngữ là cụm giải thích thêm cho danh từ đứng trước nó. Bỏ đi câu vẫn đủ nghĩa. Khi viết, đồng vị ngữ được đánh dấu bằng dấu phẩy (đề trong video chọn đáp án: dấu gạch ngang, hãy hỏi lại cô cho chắc). Khi nói, nó nằm giữa hai quãng nghỉ ngắn. Ví dụ: The chameleon, a type of lizard, changes its skin color."],
+  ["Ngữ pháp: mệnh đề quan hệ (relative clauses)","Mệnh đề quan hệ làm câu phong phú, nối hai câu ngắn thành một. Bắt đầu bằng who, whom, that, which, when, where. Là mệnh đề phụ thuộc, không đứng một mình. Có thể làm chủ ngữ hoặc tân ngữ. Ví dụ: The conductor who was wearing a blue cap walked onto the platform."],
+  ["Phát âm: trọng âm khi thêm hậu tố","Nhấn vào chính hậu tố: -ee, -eer, -ese, -ier, -ique (employee, Chinese, cashier). Giữ trọng âm của từ gốc: -al, -ment, -ness, -ous, -or, -y, -ism, -ly (profession, professional, equipment). Nhấn âm tiết ngay trước hậu tố: -ial, -ian, -ion, -ics, -ical, -ient, -ious, -ify, -itive, -ity, -graphy, -logy, -ual. Không chắc thì tra từ điển."],
+  ["Kỹ năng nói: nhắc lại và hỏi làm rõ","Nhắc lại ý người nói để xác nhận mình hiểu đúng. Hỏi làm rõ: Do you mean that…? Could you clarify that last concept? Could you give an example?"]
+ ],
+ key:[
+  ["Listening 1: Sherlock Holmes và đánh lừa thị giác","Thám tử Holmes dùng các thủ thuật: cải trang (disguise), giấu quần áo, đánh lạc hướng (misdirection), bằng chứng giả, theo dõi (surveillance), mồi nhử (decoy). Bài ghi chú gồm ba cột: cải trang gì, làm thế nào, kết quả."],
+  ["Listening 2: phóng sự National Geographic về động vật sống sót","Động vật thích nghi và ngụy trang để sống sót. Chim ptarmigan có lông nâu khó thấy, mùa đông mọc lông trắng ở chân như giày tuyết, vừa ngụy trang vừa giữ ấm. Cuộc chiến sinh tồn làm cán cân giữa thú săn mồi và con mồi luôn thay đổi. Cũng có sâu bướm, bọ ngựa, rắn, cá bơn."]
+ ],
+ vocab:[
+  ["adapt","/əˈdæpt/","v","thích nghi","Animals adapt to cold weather."],
+  ["mature","/məˈtʃʊr/","v, adj","trưởng thành","The birds mature in about a year."],
+  ["prey","/preɪ/","n","con mồi","Mice are prey for owls."],
+  ["camouflage","/ˈkæməflɑːʒ/","n, v","ngụy trang","The brown feathers give good camouflage."],
+  ["mimic","/ˈmɪmɪk/","v","bắt chước","Some insects mimic leaves."],
+  ["resemble","/rɪˈzembl/","v","trông giống","The moth resembles a dry leaf."],
+  ["elaborate","/ɪˈlæbərət/","adj","công phu, phức tạp","The detective used an elaborate disguise."],
+  ["obvious","/ˈɑːbviəs/","adj","rõ ràng","The answer was obvious."],
+  ["shift","/ʃɪft/","v, n","chuyển đổi","The balance of power keeps shifting."],
+  ["infinite","/ˈɪnfɪnət/","adj","vô tận","Nature has infinite forms of survival."],
+  ["predator","/ˈpredətər/","n","thú săn mồi","A predator hunts other animals."],
+  ["virtually","/ˈvɜːrtʃuəli/","adv","gần như","The bird is virtually invisible in the snow."],
+  ["disguise","/dɪsˈɡaɪz/","n, v","sự cải trang","He used a disguise to avoid being recognized."],
+  ["decoy","/ˈdiːkɔɪ/","n","mồi nhử","The police used a decoy."]
+ ]},
+{n:4,title:"International relations: global citizens",vi:"Quan hệ quốc tế: công dân toàn cầu",q:"What does it mean to be a global citizen?",
+ skills:[
+  ["Ghi chú bằng biểu đồ chữ T (note-taking)","Dùng khi bài nói về vấn đề và giải pháp: cột trái là vấn đề, cột phải là giải pháp. Nếu nghe lệch thứ tự thì ghi đúng cột rồi sắp lại sau. Nghe sót chi tiết thì gạch một dòng nhắc để hỏi bạn sau. Chuẩn bị trước sơ đồ cũng là cách tốt. Cụm báo vấn đề: One problem is, The trouble is that, Another obstacle we face is. Cụm báo giải pháp: People should/must, One suggestion is to, We can solve this by, They need to."],
+  ["Kỹ năng nghe: số liệu và sự kiện","Bài dựa trên số liệu thì ghi ý tổng thể, xu hướng quan trọng và số liệu cụ thể người nói nhấn mạnh, kèm từ khóa. Không chắc thì thêm dấu hỏi để tìm lại sau. Cụm hay gặp: in the early 1990s, in recent years, an increase in, a decrease in, it is estimated that, roughly, more than, fewer than, research shows that, the percent of."],
+  ["Ngữ pháp: câu tường thuật (reported speech)","Nói về điều đã nói trong quá khứ thì lùi một thì: hiện tại đơn thành quá khứ đơn, hiện tại tiếp diễn thành quá khứ tiếp diễn, quá khứ đơn và hiện tại hoàn thành thành quá khứ hoàn thành, will thành would, can thành could, may thành might. Sự thật hiện hành thì giữ nguyên thì (he said climate change is a reality). Câu hỏi khi tường thuật dùng trật tự câu trần thuật (asked what the agenda was). Động từ tường thuật: say, tell, ask, add, state, remark, respond, warn. Có thể phải đổi đại từ. Câu hỏi Yes/No dùng if hoặc whether."],
+  ["Phát âm: nối âm cuối","Đừng bỏ phụ âm cuối. Nối phụ âm cuối với nguyên âm đầu của từ sau (salt items, miles away). Khi phụ âm cuối giống phụ âm đầu từ sau thì giữ lâu hơn, không chèn nguyên âm vào giữa (one tap, take control). Chèn nguyên âm sẽ thêm âm tiết và làm người nghe khó hiểu."],
+  ["Kỹ năng nói: trích dẫn nguồn (citing sources)","Khi thuyết trình học thuật cần nói thông tin lấy từ đâu. Ba cách: giới thiệu người viết hoặc nói, nói nơi và thời điểm công bố, dùng câu tường thuật. Cụm hay dùng: According to X, As X explains, As X reports, Data from X support that, In a survey published in X, X results show that, At a conference on [date], X explained how."]
+ ],
+ key:[
+  ["Listening 1: The campaign to humanize the coffee trade","Phóng sự của đài American RadioWorks về cà phê thương mại công bằng (fair trade). Nông dân Guatemala vất vả, nhà cửa nghèo, giá cà phê thế giới lên xuống. Các nhà hoạt động khuyên người tiêu dùng tìm nhãn fair trade để thay đổi đời sống nông dân."],
+  ["Bài nghe số liệu về cà phê","90% cà phê được trồng ở các nước đang phát triển. Người ta uống khoảng hơn 400 tỷ tách mỗi năm. 20 triệu gia đình làm nghề trồng cà phê. Gần một phần ba cà phê thế giới trồng ở Brazil, hơn 3 tỷ cây."],
+  ["Ví dụ biểu đồ chữ T về nạn đói","Vấn đề: đất xấu, thiếu nước, thiếu giáo dục. Giải pháp: cung cấp phân bón, giúp làm hệ thống tưới, cấp dụng cụ, dạy nông dân."]
+ ],
+ vocab:[
+  ["activist","/ˈæktɪvɪst/","n","nhà hoạt động xã hội","Activists want fair prices for farmers."],
+  ["afford","/əˈfɔːrd/","v","đủ khả năng chi trả","Many farmers cannot afford a horse."],
+  ["co-op","/ˈkoʊɑːp/","n","hợp tác xã","The farmers formed a co-op."],
+  ["commodity","/kəˈmɑːdəti/","n","hàng hóa","Coffee is a global commodity."],
+  ["devise","/dɪˈvaɪz/","v","nghĩ ra, vạch ra","They devised a new plan to help farmers."],
+  ["guarantee","/ˌɡerənˈtiː/","v, n","bảo đảm","Fair trade guarantees a minimum price."],
+  ["intermediary","/ˌɪntərˈmiːdieri/","n","người trung gian","The intermediary takes a share of the money."],
+  ["massive","/ˈmæsɪv/","adj","khổng lồ","The company makes massive profits."],
+  ["processor","/ˈprɑːsesər/","n","nhà chế biến","The processor cleans and packs the beans."],
+  ["roughly","/ˈrʌfli/","adv","khoảng, xấp xỉ","Roughly 20 million families grow coffee."],
+  ["speculation","/ˌspekjuˈleɪʃn/","n","đầu cơ, sự suy đoán","Speculation makes prices go up and down."],
+  ["transform","/trænsˈfɔːrm/","v","biến đổi hoàn toàn","Fair trade can transform farmers’ lives."]
+ ]}
+];
+
+// Câu hỏi ôn đọc từ video "Câu hỏi ôn" (chị làm trên trang trường). a=null: chưa rõ đáp án
+const ON=[
+{"unit":1,"note":"Ôn tập Unit 1 (10 câu). Câu 1-5 điền từ từ ngân hàng từ. Câu 6-10 nghe bài giảng về song ngữ (audio 3:56).",
+ "bank":["overall","external","insight","structure","perceptions","recovery"],
+ "q":[
+ {"q":"The research shows that _____ price increases were very high.","o":["overall","external","insight","structure","perceptions","recovery"],"a":0},
+ {"q":"This chart shows the _____ of the organization. It has three different branches.","o":["overall","external","insight","structure","perceptions","recovery"],"a":3},
+ {"q":"Animals have different _____ of color than people do. Many don't see the same colors we do.","o":["overall","external","insight","structure","perceptions","recovery"],"a":4},
+ {"q":"What are the chances for the patient to have a full _____ ?","o":["overall","external","insight","structure","perceptions","recovery"],"a":5},
+ {"q":"The guidance counselor has good _____ into how the college application process works.","o":["overall","external","insight","structure","perceptions","recovery"],"a":2},
+ {"q":"Who is the person speaking here?","o":["a bilingual executive for a hiring company","a language instructor","a Chinese teacher of business"],"a":1,"listen":true,"confirm":"đáp án suy ra: chị chọn C bị sai"},
+ {"q":"What details does the teacher provide about bilingualism?","o":["research that shows less memory loss in bilingual adults","reports that confirm that bilingual children have learning problems","research that shows higher salaries for bilingual employees"],"a":0,"listen":true},
+ {"q":"What percent of recruiters cited here stress the importance of bilingualism?","o":["90 percent","19 percent","9 percent"],"a":0,"listen":true},
+ {"q":"What is NOT mentioned as a benefit of bilingualism?","o":["higher salaries for the same job","better chance for promotions","better critical thinking skills"],"a":0,"listen":true},
+ {"q":"In the last section, what does the speaker recommend?","o":["telling an interviewer about your vacations in other countries","listing any languages you are fluent in on a resume","listing all languages classes you have taken on a resume"],"a":1,"listen":true}
+ ]},
+{"unit":2,"note":"Ôn tập Unit 2 (10 câu). Câu 10 chị làm sai, chưa rõ đáp án đúng.",
+ "q":[
+ {"q":"What is a critical thinking skill that is essential for taking and organizing notes?","o":["Memorizing facts","Finding relationships between items","Reading comprehension","Speed writing"],"a":1},
+ {"q":"What is the objective of a discussion or lecture in many academic fields?","o":["To memorize facts","To entertain students","To find similarities and differences between items","To improve handwriting"],"a":2},
+ {"q":"What are some of the phrases to listen for that introduce examples?","o":["However, nevertheless, although","For example, for instance, such as","Therefore, consequently, hence","But, yet, still"],"a":1},
+ {"q":"What does rising intonation in a speaker's list of examples indicate?","o":["The speaker is finished","The speaker is making a statement","The speaker is not finished and is continuing the list","The speaker is asking a question"],"a":2},
+ {"q":"Which of the following is an example of an intensified comparison for an adjective?","o":["clearer than","much clearer than","less aware","as productive as"],"a":1},
+ {"q":"What is an example of a negative comparison for a noun according to the table?","o":["fewer perks than","more perks than","many more/fewer perks than","as many perks as"],"a":0},
+ {"q":"When presenting a list of choices, how should the intonation change on the last item if it ends in a stressed syllable?","o":["Rising intonation on the stressed syllable, followed by a drop in pitch.","Glide up and down on the stressed syllable.","Maintain a steady pitch on the stressed syllable.","Drop in pitch on the stressed syllable, followed by a rise."],"a":0},
+ {"q":"What type of intonation is used on the word \"or\" in a choice question?","o":["Rising intonation","Falling intonation","Steady pitch","Glide up and down"],"a":0},
+ {"q":"Which of the following is NOT a way to express past preferences?","o":["Prefer + noun or noun phrase","Choose + infinitive","First/second choice + be","Would rather + verb"],"a":3},
+ {"q":"Which of the following expressions is used to express a current preference?","o":["Had hoped + infinitive","Preference + is + infinitive","Would rather + verb","I like... more than..."],"a":null,"confirm":"chị chọn C và bị tính 0 điểm, chưa rõ đáp án đúng"}
+ ]},
+{"unit":3,"note":"Ôn tập Unit 3 (10 câu). Câu 8 đáp án đọc từ khung hình mờ. Câu 10 chị làm sai.",
+ "q":[
+ {"q":"What is the first step mentioned in the text to prepare for a lecture?","o":["Talk with classmates about the topic.","Read assigned materials before the lecture.","Write key words in a graphic organizer."],"a":1},
+ {"q":"What is the purpose of comparing prior knowledge with the speaker's information?","o":["To confirm or challenge existing understanding.","To predict what the speaker will say next.","To organize notes efficiently.","To improve listening comprehension."],"a":0},
+ {"q":"What is an appositive?","o":["A word or phrase that modifies a noun or pronoun.","A phrase that gives additional information about a noun or pronoun.","A clause that is independent of the main clause.","A type of punctuation mark."],"a":1},
+ {"q":"How are appositives marked in writing?","o":["By parentheses.","By dashes.","By colons.","By commas."],"a":1,"confirm":"đáp án trong video là B (By dashes). Theo ngữ pháp thường là dấu phẩy, nên chị hỏi lại cô"},
+ {"q":"What is the purpose of relative clauses?","o":["To make sentences shorter and simpler.","To add variety and interest to sentences.","To create independent clauses.","To replace nouns with pronouns."],"a":1},
+ {"q":"What type of clause is a relative clause?","o":["Independent clause.","Dependent clause.","Noun clause.","Adjective clause."],"a":1},
+ {"q":"What is the general rule for adding the suffixes \"-ee\", \"-eer\", \"-ese\", \"-ier\", and \"-ique\"?","o":["Keep the stress on the same syllable as the base word.","Move the stress one syllable to the left.","Move the stress one syllable to the right.","Move the stress to the last syllable."],"a":2},
+ {"q":"Which of the following suffixes generally causes the stress to remain on the same syllable as the base word?","o":["\"-al\", \"-ment\", \"-ness\", \"-ous\", \"-or\", \"-y\", \"-ism\", \"-ly\"","\"-ial\", \"-ian\", \"-ion\", \"-ics\", \"-ical\", \"-ient\", \"-ious\", \"-ify\", \"-itive\", \"-ity\", \"-graphy\", \"-logy\", \"-ual\"","\"-ary\", \"-ate\", \"-ize\""],"a":0},
+ {"q":"What is the purpose of restating a speaker's point?","o":["To confirm understanding of what the speaker said.","To challenge the speaker's point of view.","To change the topic of conversation.","To avoid asking questions."],"a":0},
+ {"q":"Which of the following is NOT a way to ask a speaker for clarification?","o":["\"Do you mean that ...?\"","\"Could you clarify that last concept?\"","\"Could you give an example?\""],"a":null,"confirm":"chưa thấy đủ đáp án, chị làm sai câu này"}
+ ]},
+{"unit":4,"note":"Ôn tập Unit 4 (10 câu), chị đạt 8/10. Câu 8 và 10 chị làm sai.",
+ "q":[
+ {"q":"What is the purpose of using a T-chart to take notes on problems and solutions?","o":["To organize information in a clear and visual way.","To compare and contrast different solutions.","To identify the main points of a lecture.","To brainstorm ideas for solving problems."],"a":0},
+ {"q":"What should you do if you hear a detail that you don't have time to write down during a lecture?","o":["Ignore it and focus on the next point.","Ask the speaker to repeat the information later.","Make a note to ask a classmate about it later.","Try to write it down as quickly as possible."],"a":2},
+ {"q":"What type of information should you focus on in a presentation that relies on statistical facts and figures?","o":["Personal stories and anecdotes.","Overall ideas, important trends, and specific data.","Theories and examples to support the speaker's point.","Expert opinions and personal experiences."],"a":1},
+ {"q":"If you miss a fact or number during a presentation, what should you do?","o":["Ignore it and move on.","Ask the speaker to repeat the information immediately.","Make a note to find out the information later.","Assume the information is not important."],"a":2},
+ {"q":"What is the main purpose of reported speech?","o":["To directly quote someone else's words.","To report information from another source in your own words.","To express personal opinions and ideas.","To summarize a lengthy text."],"a":1},
+ {"q":"What happens to the verb tense in reported speech when talking about things said in the past?","o":["It remains the same as in the original sentence.","It is shifted one tense earlier.","It is shifted one tense later.","It depends on the context."],"a":1},
+ {"q":"What is the main purpose of linking words in speech?","o":["To make speech sound more natural and fluent.","To emphasize individual words and sounds.","To slow down speech and make it easier to understand.","To avoid dropping final consonants."],"a":0},
+ {"q":"What should you avoid doing when linking words with final consonants?","o":["Dropping final consonants.","Inserting vowel sounds between consonants.","Linking words that belong to different thought groups.","All of the above."],"a":1,"confirm":"chị chọn sai câu này; B suy ra từ khung hình, nên kiểm lại"},
+ {"q":"What is the main benefit of citing sources in an academic presentation?","o":["To make the presentation more interesting and engaging.","To demonstrate the speaker's knowledge and expertise.","To add visual appeal to the presentation.","To shorten the length of the presentation."],"a":1}
+ ]}
+]
+;
+
+// Đề cuối kỳ: THI NÓI. Nội dung lấy từ buổi ôn cuối kỳ của cô (chép lời tự động, có thể sai chữ)
+const FINAL={
+ format:[
+  "Thi nói trực tuyến, có người coi thi và giám khảo. Bật camera, giơ thẻ sinh viên trước màn hình, nền yên tĩnh.",
+  "Phần 1: danh sách 8 câu hỏi hiện trên màn hình. Chọn ít nhất 3 câu, tự đọc to câu hỏi rồi trả lời. Mỗi câu khoảng 40 đến 60 giây, cả phần 2 đến 3 phút. Không có thời gian chuẩn bị. Nếu nói nhanh được trả lời thêm nhiều hơn 3 câu.",
+  "Phần 2: danh sách 5 chủ đề. Chọn 1 chủ đề, đọc to, được chuẩn bị 1 phút, rồi nói khoảng 2 đến 3 phút (tối đa 4 phút, giám khảo có thể ngắt ở 2 phút). Không dùng slide. Ghi chú nhanh trên giấy được.",
+  "Giám khảo không đặt câu hỏi giúp. Mình tự đọc đề, tự nói.",
+  "Có khoảng 5 mã đề (test code), mỗi mã có 8 câu phần 1 và 5 chủ đề phần 2, tổng khoảng 40 câu phần 1. Cô nói bộ đề 00 là bộ quan trọng nhất để ôn, các bộ khác chỉ để tham khảo. Cô nói không biết trước đề thật.",
+  "Xong bài, giám khảo báo điểm ngay. Quên thì hỏi: Can I have my mark please? Kết thúc bài nói bằng: That’s all, thank you."
+ ],
+ criteria:[
+  ["Fluency (độ trôi chảy)","25%","9 đến 10 điểm: chỉ ngập ngừng 1 đến 2 lần, nói trôi chảy, dễ hiểu."],
+  ["Pronunciation (phát âm)","25%","Chỉ sai 1 đến 2 lỗi và không ảnh hưởng việc hiểu. Đúng trọng âm và ngữ điệu."],
+  ["Content (nội dung)","25%","Có 3 đến 4 ý chính, mỗi ý có lý do và ví dụ phù hợp. Có dàn ý rõ."],
+  ["Vocabulary and grammar (từ vựng, ngữ pháp)","25%","Khoảng 20% trở lên từ vựng hoặc cấu trúc trên B1 (B2), có thể dùng từ trong sách. Ít lỗi ngữ pháp."]
+ ],
+ rules:[
+  "Đừng lặp lại nguyên câu hỏi trong câu trả lời. Diễn đạt lại bằng từ và cấu trúc khác, điểm từ vựng và ngữ pháp sẽ cao hơn.",
+  "Trả lời thẳng câu hỏi trước, rồi mới giải thích và cho ví dụ.",
+  "Câu hỏi Yes/No đừng chỉ nói yes hay no. Phải thêm lý do và ví dụ.",
+  "Câu hỏi hai lý do (two reasons, two things) thì nói đủ hai.",
+  "Đừng học thuộc cả bài rồi đọc. Giám khảo nhận ra ngay, bị điểm thấp, nặng thì bị đình chỉ. Học dàn ý và từ khóa rồi nói tự nhiên.",
+  "Quên từ thì diễn đạt vòng: It’s a kind of house people usually live in.",
+  "Không im lặng lâu, nói tốc độ vừa, nhìn vào camera, không nhìn xuống hoặc nhìn sang bên.",
+  "Không gian lận. Nếu bị phát hiện có người nhắc hoặc có kịch bản trước mặt, điểm sẽ là 0."
+ ],
+ phrases:[
+  ["Mở đầu ý kiến","I think… / I believe… / In my opinion… / I’d say…"],
+  ["Nêu lý do","One reason is… / Another reason is… / First of all… / Second…"],
+  ["Cho ví dụ","For example… / For instance… / Take my family as an example… / What I mean is…"],
+  ["Nói hai mặt","On the one hand… on the other hand… / It depends. / To be honest, it could be this way or that way."],
+  ["So sánh","Compared with… / …is better at… than… / The main advantage of… is…"],
+  ["Kết luận","In the long run… / Overall, I’d say… / To conclude… / Finally…"]
+ ],
+ days:[
+  "Ngày 1: đọc 8 câu phần 1 và 5 chủ đề phần 2 của bộ đề 00. Chọn 5 câu và 2 chủ đề mình thích nhất.",
+  "Ngày 2: luyện 5 câu phần 1, thu âm và nghe lại.",
+  "Ngày 3: lập dàn ý 3 ý chính cho 2 chủ đề phần 2, tập nói thử 2 đến 4 phút.",
+  "Ngày 4: kiểm tra phát âm từ khóa, trọng âm, ngữ điệu. Thêm từ vựng nâng cao.",
+  "Ngày 5 và 6: làm 2 đến 3 bộ đề mỗi ngày, bấm giờ, không xem gợi ý.",
+  "Ngày 7: thi thử một bộ ngẫu nhiên, như thi thật."
+ ],
+ p1:[
+  {q:"What helps employees stay motivated when the work is repetitive?",type:"Hai ý (two things)",
+   out:"Ý 1: được ghi nhận. Ý 2: luân phiên công việc hoặc thấy ý nghĩa công việc. Có ví dụ thực tế.",
+   words:"recognition, incentives, job rotation, burnout, sense of purpose, repetitive, meaningful",
+   a:"I think the biggest factor is recognition. When a manager notices good work, even a boring task feels meaningful. For example, in a small workshop I know, a worker who checks the same parts every day works harder when the boss thanks him in front of the team. Another thing that helps is variety. If people can rotate between different jobs, they get less bored and learn new skills. On the other hand, money alone does not last long, because the work stays dull. Overall, I’d say recognition and job rotation give people a sense of purpose and help them avoid burnout."},
+  {q:"What can one person do about global problems like poverty?",type:"Hai việc (two things)",
+   out:"Việc 1: quyên góp hoặc làm tình nguyện. Việc 2: chọn hàng công bằng, ủng hộ doanh nghiệp tử tế, lên tiếng.",
+   words:"donate, volunteer, raise awareness, fair trade, make a difference, small steps, poverty",
+   a:"There are two things one person can do. First of all, we can donate money or time. Even a small amount helps, and volunteering at a local charity gives us real experience of how poverty feels. Second, we can make careful choices as consumers. For instance, buying fair trade coffee guarantees a better price for farmers. We can also raise awareness by sharing reliable information with friends and family. One person cannot solve poverty alone, but small steps add up. In the long run, many people making a difference can change a whole community."},
+  {q:"Should the government pay people to use less electricity?",type:"Ý kiến (opinion)",
+   out:"Chọn một phía, 2 lý do. Có thể nêu một mặt trái rồi kết luận.",
+   words:"incentive, reduce, energy consumption, bill, budget, awareness, effective",
+   a:"I believe the government should do it, but only in a limited way. One reason is that people respond quickly to money. If they get a discount on their electricity bill, they will turn off unused lights and buy efficient appliances. Another reason is that using less electricity protects the environment and reduces pressure on power plants. On the other hand, this policy costs a lot of money, so the government must have a clear budget. It could also teach people about saving energy instead of only paying them. Overall, I’d say a small reward is an effective incentive."},
+  {q:"How reliable is solar power for a country like Vietnam?",type:"Hai lý do (two reasons)",
+   out:"Mặt tốt: nhiều nắng. Mặt hạn chế: mùa mưa, ban đêm, cần pin lưu trữ. Kết luận: khá đáng tin nhưng chưa 100%.",
+   words:"reliable, sunlight hours, storage, battery, weather, rainy season, renewable energy",
+   a:"I’d say solar power is fairly reliable, but not completely. One reason is that Vietnam is near the equator, so we have strong sunshine for many months. Because of that, solar panels can produce a lot of electricity, especially in the south and the central region. However, we cannot be 100 percent sure of sunlight all year. In the rainy season, and of course at night, production drops. So the country needs batteries or other energy sources as backup. In the long run, solar power is a good choice if we combine it with storage."},
+  {q:"Does using slang make speakers sound friendly and professional?",type:"Ý kiến (opinion)",
+   out:"Đề gốc có thể hơi khác chữ. Thân thiện: có. Chuyên nghiệp: không trong môi trường trang trọng. Kết luận: tùy hoàn cảnh.",
+   words:"slang, informal, formal, workplace, audience, relaxed, credibility",
+   a:"To be honest, it depends. Slang can make a speaker sound friendly and relaxed. For example, when I talk with friends or young customers, slang helps us connect quickly. However, I don’t think slang sounds professional. In a meeting or a presentation, people expect clear and polite language, and too much slang can reduce the speaker’s credibility. So I’d say friendly, yes, but professional, not really. The best choice is to know your audience: use light, informal language in a casual talk, and formal language at work or in a presentation."},
+  {q:"Why do some innovations take years to become popular?",type:"Hai lý do (two reasons)",
+   out:"Lý do 1: giá cao hoặc khó dùng. Lý do 2: thói quen và niềm tin của người dùng, thiếu hạ tầng.",
+   words:"innovation, adopt, habit, affordable, infrastructure, trust, early adopters",
+   a:"There are two main reasons. The first one is cost and convenience. New products are often expensive or difficult to use at the beginning, so only a few early adopters buy them. The second reason is habit. People trust what they already know, and changing a habit takes time. For instance, electric cars are better for the environment, but many people still worry about charging stations and price. Over time, when the price falls and the infrastructure improves, more people accept the idea. Overall, I’d say popularity grows slowly because people need time to trust something new."},
+  {q:"Can advertisers deceive customers without actually lying?",type:"Ý kiến, ví dụ (opinion)",
+   out:"Trả lời có. Hai ví dụ: hình ảnh quảng cáo đẹp hơn thực tế, chữ nhỏ hoặc nói một nửa sự thật. Gắn với bài học đánh lừa thị giác (visual tricks).",
+   words:"deceive, misleading, exaggerate, small print, visual tricks, half-truth, customers",
+   a:"Yes, I think they can. One way is visual tricks. A food photo can look delicious because of special lighting, but the real meal is much smaller. Nobody lied, but the customer feels deceived. Another way is a half-truth. For example, an advertisement says that a drink has no added sugar, but it does not say that the drink already contains a lot of natural sugar. The words are true, but the message is misleading. So customers should read the small print and compare products before they buy. In the long run, honest advertising earns more trust."},
+  {q:"Is fair trade worth the higher price for ordinary consumers?",type:"Ý kiến (opinion)",
+   out:"Chọn có hoặc tùy. Lý do 1: nông dân được giá công bằng. Lý do 2: chất lượng và trách nhiệm. Mặt trái: giá cao với người thu nhập thấp.",
+   words:"fair trade, farmers, guarantee, minimum price, afford, global citizen, ethical",
+   a:"I think it is worth it, as long as people can afford it. One reason is that fair trade guarantees farmers a minimum price, so they can send their children to school and improve their lives. Another reason is that it makes us global citizens. When we pay a little more, we share responsibility for people far away. On the other hand, for families with a low income, the higher price can be a real burden. So it depends on each person’s budget. Overall, I’d say that if we can choose one fair trade product a week, it is a small price for a big difference."}
+ ],
+ p2:[
+  {q:"What is important when a community decides whether to build a new power plant nearby?",type:"Điều quan trọng (what is important)",
+   out:"Mở: có 3 yếu tố chính. Thân: an toàn và môi trường, lợi ích cho người dân, tác động lâu dài. Kết: cần cân bằng.",
+   words:"safety, environment, benefits, local residents, long-term effect, pollution, jobs",
+   a:"There are three key factors a community should think about before building a new power plant nearby. The first one is safety and the environment. People must be sure that the plant will not pollute the air or the water, and that there is a plan for accidents. For example, a coal plant can cause health problems for children. The second factor is the benefits for local people. A new plant can create jobs and bring investment, and the community should check whether residents get cheaper electricity or better roads. The third factor is the long-term effect. We should ask what will happen in twenty or thirty years: who will pay for the cleaning, and can the plant use clean energy? In conclusion, a community should balance safety, benefits, and the long-term future before deciding."},
+  {q:"Describe an occasion when something you saw turned out to be very different from what it really was.",type:"Một dịp, một câu chuyện (an occasion)",
+   out:"Mở: bối cảnh. Thân: lúc đầu thấy gì, thực tế thế nào, mình học được gì. Kết: đừng đánh giá qua vẻ ngoài.",
+   words:"appearance, first impression, turned out, misleading, judge, realize, lesson",
+   a:"I’d like to talk about a time when a first impression was completely wrong. A few years ago, I visited a restaurant because the outside looked beautiful, with bright lights and a modern sign. I expected delicious food. However, when we sat down, the service was slow, the food was cold, and the prices were very high. Later, my friend took me to a small, old shop near my house. It looked dirty and simple, but the owner was friendly and the food was fantastic. That day I realized that appearances can be misleading. What I learned is that I should not judge a place by its outside. As the saying goes, don’t judge a book by its cover. Since then, I always try to check reviews and give simple places a chance."},
+  {q:"Why do some people fight hard to separate work time from leisure time?",type:"Tại sao (why)",
+   out:"Mở: nêu hai hoặc ba lý do. Thân: sức khỏe tinh thần và burnout, thời gian cho gia đình, công nghệ làm mờ ranh giới. Kết: cần ranh giới rõ ràng.",
+   words:"work-life balance, boundary, burnout, leisure, remote work, productive, mental health",
+   a:"I think there are three main reasons. The first one is mental health. If people work all day and all night, they feel stressed and can reach burnout. Rest time lets the brain recover, so they are more productive later. The second reason is family and personal life. Many people want to spend evenings with their children or friends, and they don’t want work messages to interrupt them. The third reason is technology. Smartphones and working from home make the boundary between work and leisure very weak, so people must fight harder to keep it. For example, a colleague of mine turns off her work phone at six every day. In conclusion, a clear boundary helps people stay healthy and happy, and in the long run, it also improves their work."},
+  {q:"Which are better at producing new ideas: big companies or small startups?",type:"So sánh (comparison)",
+   out:"Mở: nêu quan điểm. Thân: ưu điểm startup (linh hoạt, dám mạo hiểm), ưu điểm công ty lớn (vốn, nhân lực), rồi chọn bên mạnh hơn. Kết: kết luận.",
+   words:"startup, flexible, resources, risk, bureaucracy, funding, innovative",
+   a:"In my opinion, small startups are usually better at producing new ideas, although big companies have their own strengths. First, startups are flexible. They have few levels of management, so a good idea can become a product quickly, without long meetings. They also take more risks, because they have little to lose. On the other hand, big companies have money, equipment, and experts, which are very important for developing and testing new ideas. For instance, a large technology company can spend millions on research. However, big companies are often slow and afraid of failure, so many great ideas are rejected. Compared with big companies, startups are more creative, but they often need support. To conclude, I’d say the best result comes when startups create ideas and big companies help them grow."},
+  {q:"How can people train themselves to notice details that others miss?",type:"Cách làm (how to / procedure)",
+   out:"Mở: có 3 cách. Thân: chậm lại và quan sát, luyện bằng trò chơi (puzzle) và ghi chú, học từ chuyên gia. Kết: luyện đều sẽ thành thói quen.",
+   words:"observe, slow down, puzzle, take notes, take photos, concentrate, experts",
+   a:"There are three ways people can train themselves to notice more details. The first way is to slow down. We often look at things quickly and miss important points, so we should stop for a moment and observe carefully, for example when we walk in a park or read a contract. The second way is to practice with games and tools. Puzzles and spot-the-difference games improve concentration, and taking notes or photos helps us remember what we see. The third way is to learn from experts. A good teacher or an experienced detective can show us what to look for, and we can copy their method. For instance, a good accountant checks small numbers that other people ignore. In conclusion, with regular practice, noticing details becomes a habit."}
+ ]
+};
+
+// Bản tiếng Việt của đề cuối kỳ (em dịch để chị hiểu ý, không phải bản chính thức của cô). Thứ tự giống FINAL.p1 và FINAL.p2
+const VIF={
+ p1:[
+  {q:"Điều gì giúp nhân viên giữ động lực khi công việc lặp đi lặp lại?",
+   a:"Tôi nghĩ yếu tố lớn nhất là sự ghi nhận. Khi quản lý để ý đến việc làm tốt, ngay cả một công việc nhàm chán cũng trở nên có ý nghĩa. Ví dụ, ở một xưởng nhỏ mà tôi biết, một công nhân ngày nào cũng kiểm tra cùng một loại chi tiết sẽ làm hăng hơn khi ông chủ cảm ơn anh ấy trước cả tổ. Một điều khác cũng giúp ích là sự đa dạng. Nếu mọi người được luân phiên giữa các việc khác nhau, họ bớt chán và học thêm kỹ năng mới. Mặt khác, chỉ có tiền thì không giữ được lâu, vì công việc vẫn khô khan. Nhìn chung, tôi cho rằng sự ghi nhận và việc luân phiên công việc cho mọi người cảm giác có mục đích và giúp họ tránh kiệt sức."},
+  {q:"Một người có thể làm gì trước những vấn đề toàn cầu như đói nghèo?",
+   a:"Một người có thể làm hai việc. Trước hết, chúng ta có thể quyên góp tiền hoặc thời gian. Dù chỉ một khoản nhỏ cũng có ích, và làm tình nguyện ở một tổ chức từ thiện địa phương cho ta trải nghiệm thật về cảnh nghèo khó. Thứ hai, chúng ta có thể lựa chọn cẩn thận khi là người tiêu dùng. Ví dụ, mua cà phê thương mại công bằng bảo đảm nông dân có giá tốt hơn. Chúng ta cũng có thể nâng cao nhận thức bằng cách chia sẻ thông tin đáng tin cậy với bạn bè và gia đình. Một người không thể tự giải quyết đói nghèo, nhưng những bước nhỏ cộng lại sẽ thành lớn. Về lâu dài, nhiều người cùng tạo ra khác biệt có thể thay đổi cả một cộng đồng."},
+  {q:"Chính phủ có nên trả tiền cho người dân để họ dùng ít điện hơn không?",
+   a:"Tôi tin là chính phủ nên làm, nhưng chỉ ở mức hạn chế. Một lý do là mọi người phản ứng rất nhanh với tiền. Nếu được giảm hóa đơn tiền điện, họ sẽ tắt đèn không dùng và mua thiết bị tiết kiệm điện. Một lý do khác là dùng ít điện hơn giúp bảo vệ môi trường và giảm áp lực cho các nhà máy điện. Mặt khác, chính sách này tốn rất nhiều tiền, nên chính phủ phải có ngân sách rõ ràng. Chính phủ cũng có thể dạy người dân cách tiết kiệm điện thay vì chỉ trả tiền. Nhìn chung, tôi cho rằng một phần thưởng nhỏ là một sự khuyến khích hiệu quả."},
+  {q:"Điện mặt trời đáng tin cậy đến mức nào đối với một nước như Việt Nam?",
+   a:"Tôi cho rằng điện mặt trời khá đáng tin cậy, nhưng chưa hoàn toàn. Một lý do là Việt Nam nằm gần đường xích đạo nên có nắng mạnh trong nhiều tháng. Vì vậy các tấm pin mặt trời có thể tạo ra nhiều điện, nhất là ở miền Nam và miền Trung. Tuy nhiên, ta không thể chắc chắn 100 phần trăm là có nắng quanh năm. Vào mùa mưa, và dĩ nhiên cả ban đêm, sản lượng giảm. Vì thế đất nước cần pin lưu trữ hoặc các nguồn năng lượng khác để dự phòng. Về lâu dài, điện mặt trời là một lựa chọn tốt nếu kết hợp với lưu trữ."},
+  {q:"Dùng tiếng lóng có làm người nói nghe thân thiện và chuyên nghiệp không?",
+   a:"Nói thật thì còn tùy. Tiếng lóng có thể làm người nói nghe thân thiện và thoải mái. Ví dụ, khi tôi trò chuyện với bạn bè hoặc khách hàng trẻ, tiếng lóng giúp chúng tôi gần nhau nhanh hơn. Tuy nhiên, tôi không nghĩ tiếng lóng nghe chuyên nghiệp. Trong một cuộc họp hay buổi thuyết trình, người ta mong đợi ngôn ngữ rõ ràng và lịch sự, và dùng quá nhiều tiếng lóng có thể làm giảm uy tín của người nói. Vì vậy tôi nói là thân thiện thì có, còn chuyên nghiệp thì không hẳn. Lựa chọn tốt nhất là hiểu người nghe của mình: dùng ngôn ngữ nhẹ nhàng, thân mật khi nói chuyện thoải mái, và ngôn ngữ trang trọng khi ở chỗ làm hoặc khi thuyết trình."},
+  {q:"Vì sao một số phát minh phải mất nhiều năm mới được ưa chuộng?",
+   a:"Có hai lý do chính. Lý do thứ nhất là chi phí và sự tiện lợi. Sản phẩm mới lúc đầu thường đắt hoặc khó dùng, nên chỉ một số ít người dùng thử sớm mua chúng. Lý do thứ hai là thói quen. Con người tin vào những gì mình đã quen, và đổi thói quen cần thời gian. Ví dụ, xe điện tốt hơn cho môi trường, nhưng nhiều người vẫn lo về trạm sạc và giá. Theo thời gian, khi giá giảm và hạ tầng tốt hơn, nhiều người chấp nhận ý tưởng này hơn. Nhìn chung, tôi cho rằng sự phổ biến tăng chậm vì con người cần thời gian để tin vào cái mới."},
+  {q:"Nhà quảng cáo có thể đánh lừa khách hàng mà không thực sự nói dối không?",
+   a:"Có, tôi nghĩ họ làm được. Một cách là các mẹo hình ảnh. Một tấm ảnh món ăn có thể trông rất ngon nhờ ánh sáng đặc biệt, nhưng bữa ăn thật nhỏ hơn nhiều. Không ai nói dối, nhưng khách hàng vẫn thấy bị lừa. Một cách khác là nói nửa sự thật. Ví dụ, quảng cáo nói thức uống không thêm đường, nhưng không nói rằng thức uống đó vốn đã chứa nhiều đường tự nhiên. Từ ngữ thì đúng, nhưng thông điệp lại gây hiểu lầm. Vì vậy khách hàng nên đọc chữ nhỏ và so sánh sản phẩm trước khi mua. Về lâu dài, quảng cáo trung thực sẽ có được nhiều niềm tin hơn."},
+  {q:"Thương mại công bằng có đáng với mức giá cao hơn đối với người tiêu dùng bình thường không?",
+   a:"Tôi nghĩ là đáng, miễn là mọi người đủ khả năng chi trả. Một lý do là thương mại công bằng bảo đảm cho nông dân một mức giá tối thiểu, nên họ có thể cho con đi học và cải thiện cuộc sống. Một lý do khác là nó biến chúng ta thành công dân toàn cầu. Khi trả thêm một chút, chúng ta cùng chia sẻ trách nhiệm với những người ở xa. Mặt khác, với các gia đình thu nhập thấp, giá cao hơn có thể là gánh nặng thật sự. Vì vậy còn tùy vào ngân sách của từng người. Nhìn chung, tôi cho rằng nếu mỗi tuần ta chọn được một sản phẩm thương mại công bằng, thì đó là cái giá nhỏ cho một thay đổi lớn."}
+ ],
+ p2:[
+  {q:"Điều gì quan trọng khi một cộng đồng quyết định có xây nhà máy điện mới gần đó hay không?",
+   a:"Có ba yếu tố then chốt mà một cộng đồng nên cân nhắc trước khi xây nhà máy điện mới ở gần. Yếu tố thứ nhất là an toàn và môi trường. Mọi người phải chắc chắn rằng nhà máy sẽ không làm ô nhiễm không khí hay nguồn nước, và có kế hoạch cho các sự cố. Ví dụ, một nhà máy nhiệt điện than có thể gây các vấn đề sức khỏe cho trẻ em. Yếu tố thứ hai là lợi ích cho người dân địa phương. Một nhà máy mới có thể tạo việc làm và thu hút đầu tư, và cộng đồng nên xem cư dân có được điện rẻ hơn hoặc đường tốt hơn không. Yếu tố thứ ba là tác động lâu dài. Chúng ta nên hỏi 20 hay 30 năm nữa sẽ ra sao: ai sẽ trả tiền dọn dẹp, và nhà máy có dùng được năng lượng sạch không? Tóm lại, cộng đồng nên cân bằng giữa an toàn, lợi ích và tương lai lâu dài trước khi quyết định."},
+  {q:"Hãy kể về một dịp khi điều bạn thấy hóa ra rất khác với thực tế.",
+   a:"Tôi muốn kể về một lần ấn tượng đầu tiên hoàn toàn sai. Vài năm trước, tôi đến một nhà hàng vì bên ngoài trông rất đẹp, với đèn sáng và biển hiệu hiện đại. Tôi mong đợi món ăn ngon. Tuy nhiên, khi chúng tôi ngồi xuống, phục vụ chậm, đồ ăn nguội, và giá rất cao. Sau đó, bạn tôi đưa tôi đến một quán nhỏ cũ gần nhà. Trông nó bẩn và đơn sơ, nhưng chủ quán thân thiện và đồ ăn tuyệt vời. Hôm đó tôi nhận ra vẻ bề ngoài có thể gây hiểu lầm. Điều tôi học được là không nên đánh giá một nơi qua bề ngoài. Như người ta nói, đừng đánh giá cuốn sách qua bìa của nó. Từ đó, tôi luôn cố xem đánh giá và cho những quán đơn giản một cơ hội."},
+  {q:"Vì sao một số người nỗ lực hết sức để tách thời gian làm việc khỏi thời gian thư giãn?",
+   a:"Tôi nghĩ có ba lý do chính. Lý do thứ nhất là sức khỏe tinh thần. Nếu làm việc cả ngày lẫn đêm, con người căng thẳng và có thể kiệt sức. Thời gian nghỉ giúp não hồi phục, nên sau đó họ làm việc hiệu quả hơn. Lý do thứ hai là gia đình và đời sống riêng. Nhiều người muốn dành buổi tối cho con cái hoặc bạn bè, và không muốn tin nhắn công việc làm gián đoạn. Lý do thứ ba là công nghệ. Điện thoại thông minh và làm việc tại nhà khiến ranh giới giữa công việc và thư giãn rất mỏng, nên người ta phải cố hơn để giữ nó. Ví dụ, một đồng nghiệp của tôi tắt điện thoại công việc lúc sáu giờ mỗi ngày. Tóm lại, một ranh giới rõ ràng giúp con người khỏe mạnh và hạnh phúc, và về lâu dài còn cải thiện công việc của họ."},
+  {q:"Công ty lớn hay startup nhỏ giỏi hơn trong việc tạo ra ý tưởng mới?",
+   a:"Theo tôi, các startup nhỏ thường giỏi tạo ra ý tưởng mới hơn, dù công ty lớn cũng có thế mạnh riêng. Thứ nhất, startup linh hoạt. Họ có ít tầng quản lý nên một ý tưởng hay có thể thành sản phẩm nhanh chóng, không cần những cuộc họp dài. Họ cũng dám mạo hiểm hơn vì ít có gì để mất. Mặt khác, công ty lớn có tiền, thiết bị và chuyên gia, rất quan trọng để phát triển và thử nghiệm ý tưởng mới. Ví dụ, một công ty công nghệ lớn có thể chi hàng triệu cho nghiên cứu. Tuy nhiên, công ty lớn thường chậm và sợ thất bại, nên nhiều ý tưởng hay bị từ chối. So với công ty lớn, startup sáng tạo hơn, nhưng họ thường cần được hỗ trợ. Tóm lại, tôi cho rằng kết quả tốt nhất đến khi startup tạo ra ý tưởng và công ty lớn giúp chúng lớn lên."},
+  {q:"Làm thế nào con người có thể tự rèn mình để nhận ra những chi tiết mà người khác bỏ sót?",
+   a:"Có ba cách để con người tự rèn luyện nhận ra nhiều chi tiết hơn. Cách thứ nhất là chậm lại. Chúng ta thường nhìn mọi thứ rất nhanh và bỏ sót điểm quan trọng, nên cần dừng lại một chút và quan sát cẩn thận, ví dụ khi đi dạo công viên hoặc đọc một bản hợp đồng. Cách thứ hai là luyện tập bằng trò chơi và công cụ. Câu đố và trò tìm điểm khác biệt giúp cải thiện sự tập trung, còn ghi chép hay chụp ảnh giúp ta nhớ những gì đã thấy. Cách thứ ba là học từ chuyên gia. Một người thầy giỏi hoặc một thám tử nhiều kinh nghiệm có thể chỉ cho ta cần tìm gì, và ta có thể bắt chước phương pháp của họ. Ví dụ, một kế toán giỏi kiểm tra những con số nhỏ mà người khác bỏ qua. Tóm lại, nhờ luyện tập đều đặn, việc để ý chi tiết sẽ thành thói quen."}
+ ]
+};
+
+// Bài nghe trong bài đánh giá (lời chép tự động từ video, đã sửa chữ rõ ràng). Chỉ dùng để luyện nghe, đọc và điền từ.
+const PASSAGES=[
+ {id:"A1-1",title:"Đánh giá 1, phần 1: bốn người nói về thử thách trong công việc (câu 1 đến 5)",
+  text:"I wanted to make a good impression and also show him respect. I greeted him with a handshake and addressed him by his surname. When I put my hand out, I realized he had been moving in to give me a hug, so we did an awkward mixture of the two. Also, when I greeted him by his surname, he responded politely, though he used my first name. It was all a little uncomfortable. I had never worked with a virtual team on an international project before. It was quite exciting, though also challenging, to work with people from different countries. For example, there were different time zones, different IT systems, and even different local regulations. To help us all get on the same page, we defined the communication norms and the rules the team would follow, as well as the meeting dates and deadlines. We laid this all out in a document called a team charter. I went through a bit of a rough patch last year at work. I was already committed to too much, and then we lost a team member through restructuring, and I quickly became overloaded. My boss introduced me to the SMART approach to goal setting. It helped me to prioritize some tasks, do some later, and drop some completely. I now feel much more in control of my time and workload. As soon as they made the announcement about the cancellation, I knew I had to think quickly. I hurried back through the airport and was one of the first to make it to the desk. That turned out to be a good idea, as there were only nine seats available on the flight the next morning."},
+ {id:"A1-3",title:"Đánh giá 1, phần 3: Nikki van Schyndel, Becoming Wild (câu 6 đến 15)",
+  text:"I lived off the land in a rundown shack for a year and a half, and believe me, there were countless times I should have run myself home. But I wanted to stay, and it forced my mind to look and find joy in such little things, like a comfy rock to lean against, or a dry spot under a tree in the middle of a rainstorm. Now I live in the coastal community of Echo Bay. Population eight, and falling. I am blessed to live in a beautiful log cabin on an island in the wilderness. A row of solar panels lines the front porch. A black hose carries water from a distant creek. I grew up as a fashionable, privileged city girl, living the American dream life. I ventured out into the wilderness twelve years ago to survive off the land with primitive tools and technology. I survived and thrived for eighteen months. My whole being was transformed by the experience. I returned to the city for a while, but then I followed a new dream to build a log cabin. My estimated six-month plan took three and a half years."},
+ {id:"A2-1",title:"Đánh giá 2: phỏng vấn về kinh doanh sân khấu (theatre business)",
+  text:"The business side of the theatre, something which has to produce a product that people want and which people are prepared to pay for, is exactly the same as any other business. It must be planned, it must be budgeted, it must be marketed, and it must be successful in order to survive. However, the theatre is also an art form, and you cannot apply straight business standards to art. The theatre has to have the right to fail and the right to be unpopular. Most theatre managers spend most of their time trying to second guess what an audience will like. And more often than not, the things that are huge runaway successes, both artistically and commercially, you couldn’t have predicted in a million years. If you were performing a brand new play with a good but not necessarily bankable cast, you would limit the number of performances. It would seem wise to do maybe twenty or twenty-four performances of a new play and not try to run it forever, and be very careful about the size of the cast, because an awful lot of the budget goes on actors’ wages."},
+ {id:"A2-2",title:"Đánh giá 2: buổi giới thiệu sản phẩm khử mùi giày (họp kinh doanh)",
+  text:"It uses tiny particles of silver, which have antibacterial properties once ionized, and they essentially kill the microbes that cause the odors. Unit costs are between thirty-five and forty-five euros, and we would be looking for you to retail at between one hundred and one hundred and twenty euros. We are looking at a deal to outsource production, which could bring significant savings. We have estimated something in the region of ten thousand units in the first year, followed by thirty thousand in year two. There is already a range of products that can solve this problem. This is far more effective than the sprays currently on the market. Our initial market is not actually homes, but health clubs and gyms. We have patented a couple of the manufacturing processes that we think will give us an edge over any competitors."}
+];
+// Câu hỏi nghe đã kiểm tra với lời chép (bài đánh giá 1)
+const LQ=[
+ {p:"A1-1",q:"How did Speaker B feel about the international project?",o:["It was an entirely negative experience.","It was exhausting, but there were positives too.","It was challenging, but there were positives too."],a:2},
+ {p:"A1-1",q:"How does Speaker C feel now?",o:["still overloaded","ready for a break","more in control"],a:2},
+ {p:"A1-1",q:"What did Speaker D do when the flight was cancelled?",o:["She took time to consider her options.","She acted quickly.","She asked for someone’s advice."],a:1},
+ {p:"A1-3",q:"Van Schyndel grew up ______.",o:["in a coastal community in Canada","as an American city girl","in a log cabin in Echo Bay"],a:1},
+ {p:"A1-3",q:"Van Schyndel does not mention ______ as one of the hardships of living off the grid.",o:["sleeping in a tent","getting water from a creek","getting wet in the rain"],a:0},
+ {p:"A1-3",q:"True or false: She took two and a half years to build her own log cabin.",o:["true","false"],a:1},
+ {p:"A1-3",q:"True or false: She lived in the wilderness for 18 months.",o:["true","false"],a:0}
+];
+
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY='nghenoi4-cuoi-ky';
+const store=(()=>{let d={};try{d=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}return{get:(k,v)=>k in d?d[k]:v,set(k,v){d[k]=v;try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}}})();
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=(a,n)=>shuffle(a).slice(0,n);
+let speakId=0;
+const speak=t=>{try{speechSynthesis.cancel();const my=++speakId;const parts=String(t).split(/(?<=[.?!])\s+/).filter(Boolean);
+  const run=i=>{if(i>=parts.length||my!==speakId)return;const u=new SpeechSynthesisUtterance(parts[i]);u.lang='en-US';u.rate=.92;u.onend=()=>run(i+1);speechSynthesis.speak(u)};run(0)}catch(e){}};
+const sayBtn=t=>`<button class="say" type="button" data-say="${esc(t)}" aria-label="Nghe">🔊</button>`;
+const ALLW=UNITS.flatMap(u=>u.vocab.map(r=>({u:u.n,w:r[0],ipa:r[1],pos:r[2],vi:r[3],ex:r[4]})));
+const known=()=>store.get('known',{});
+const views={};
+const header=()=>{const tabs=[['home','Lịch ôn'],['final','Đề cuối kỳ'],['mock','Luyện thi nói'],['learn','Bài học'],['vocab','Từ vựng'],['cards','Flashcard'],['quiz','Câu hỏi ôn'],['listen','Luyện nghe'],['key','Key Points']];
+  $('#tabs').innerHTML=tabs.map(([k,l])=>`<button id="tab-${k}" data-go="${k}" class="tab" type="button">${l}</button>`).join('')};
+function go(v,arg){const name=views[v]?v:'home';store.set('view',name);
+  $$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.go===name?'page':'false'));
+  clearInterval(window._timer);window._mockStop&&window._mockStop();try{speechSynthesis.cancel();speakId++}catch(e){}
+  $('#main').innerHTML='';views[name](arg);window.scrollTo(0,0);try{history.replaceState(null,'','#'+name)}catch(e){}}
+const unitBar=(cur,view,all)=>`<div class="units">${all?`<button class="chip" type="button" data-go="${view}" data-arg="0" aria-pressed="${cur===0}">Tất cả</button>`:''}${UNITS.map(u=>`<button class="chip" type="button" data-go="${view}" data-arg="${u.n}" aria-pressed="${cur===u.n}">Unit ${u.n}</button>`).join('')}</div>`;
+const tbl=(hdr,rows,cls='')=>`<div class="tw"><table class="${cls}"><thead><tr>${hdr.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+
+/* ---------- Lịch ôn ---------- */
+views.home=()=>{const k=known(),nk=ALLW.filter(x=>k[x.w]).length,done=store.get('days',{}),sc=store.get('scores',{}),dn=FINAL.days.filter((_,i)=>done[i]).length;
+  $('#main').innerHTML=`<section class="intro"><h1>Nghe Nói 4, ôn thi cuối kỳ</h1>
+  <p>Bài thi cuối kỳ là <b>thi nói</b>: Phần 1 trả lời ít nhất 3 trong 8 câu hỏi, Phần 2 chọn 1 trong 5 chủ đề, chuẩn bị 1 phút rồi nói 2 đến 3 phút. Trang này gồm đề ôn, bài mẫu, luyện nói có bấm giờ, và nội dung 4 Unit cô đã dạy (Unit 1 đến 4).</p>
+  <p class="row"><button class="btn" type="button" data-go="final">Xem đề cuối kỳ</button><button class="btn ghost" type="button" data-go="mock">Luyện thi nói</button></p>
+  <div class="stats"><div><b>${dn}/${FINAL.days.length}</b><span>ngày đã ôn</span></div><div><b>${nk}/${ALLW.length}</b><span>từ đã thuộc</span></div><div><b>${Object.keys(sc).length}</b><span>đề đã làm</span></div></div>
+  <h2>Lộ trình 7 ngày (theo lời cô)</h2><ol class="plan">${FINAL.days.map((d,i)=>`<li class="${done[i]?'ok':''}"><label><input type="checkbox" data-day="${i}" ${done[i]?'checked':''}><span><b>${esc(d)}</b></span></label></li>`).join('')}</ol>
+  <div class="warn"><b>Lưu ý:</b> phần đề cuối kỳ em lấy từ video buổi ôn của cô bằng máy chép lời, nên có thể sai chữ. Cô nói bộ đề 00 là bộ chính để ôn và không biết trước đề thật. Chị đối chiếu lại với file HTML cô gửi trong buổi học nhé.</div>
+  <h2>Nên nhớ</h2><ul class="tips">${FINAL.rules.slice(0,5).map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section>`;
+  $$('[data-day]').forEach(c=>c.onchange=()=>{const d=store.get('days',{});d[c.dataset.day]=c.checked;store.set('days',d);views.home()})};
+
+/* ---------- Đề cuối kỳ ---------- */
+const qCard=(x,i,pre,part)=>{const v=VIF[part][i];return `<details class="essay"><summary><span><b>${pre}${i+1}. ${esc(x.q)}</b><span class="vi">${esc(v.q)}</span><small>${esc(x.type)}</small></span></summary>
+  <p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ vựng gợi ý:</b> ${esc(x.words)}</p>
+  <div class="sample"><p class="en">${esc(x.a)}</p><p class="vi"><b>Bản tiếng Việt:</b> ${esc(v.a)}</p><p class="row" style="margin:6px 0"><button class="btn ghost" type="button" data-say="${esc(x.a)}">🔊 Nghe bài mẫu</button><button class="btn" type="button" data-go="mock" data-arg="${part}" data-q="${i}">🎙 Luyện nói câu này</button></p></div>
+  <p class="note">Bài mẫu để tham khảo cách sắp xếp ý. Khi thi hãy nói bằng ý và ví dụ của chị, đừng học thuộc.</p></details>`};
+views.final=()=>{const showVi=store.get('showVi',true);
+  $('#main').innerHTML=`<div class="${showVi?'':'noVi'}" id="fin"><h1>Đề cuối kỳ: thi nói</h1><p class="sub">Theo buổi ôn cuối kỳ của cô. Bộ đề 00 là bộ chính để ôn.</p>
+  <label class="toggle"><input type="checkbox" id="sv" ${showVi?'checked':''}> Hiện bản tiếng Việt của câu hỏi và bài mẫu</label>
+  <h2>Cấu trúc bài thi</h2><section class="card"><ul>${FINAL.format.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section>
+  <h2>Tiêu chí chấm</h2>${tbl(['Tiêu chí','Tỷ lệ','Để đạt 9 đến 10'],FINAL.criteria.map(c=>`<tr><td><b>${esc(c[0])}</b></td><td class="num">${c[1]}</td><td>${esc(c[2])}</td></tr>`))}
+  <h2>Quy tắc để lấy điểm cao</h2><section class="card"><ul>${FINAL.rules.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section>
+  <h2>Câu nói hay dùng</h2>${tbl(['Việc cần nói','Cụm từ'],FINAL.phrases.map(p=>`<tr><td><b>${esc(p[0])}</b></td><td class="en">${esc(p[1])}</td></tr>`))}
+  <h2>Phần 1: 8 câu hỏi (bộ 00)</h2><p class="note">Chọn ít nhất 3 câu, mỗi câu khoảng 1 phút. Có dàn ý, bài mẫu tiếng Anh và bản tiếng Việt cho cả 8 câu.</p><div>${FINAL.p1.map((x,i)=>qCard(x,i,'',"p1")).join('')}</div>
+  <h2>Phần 2: 5 chủ đề (bộ 00)</h2><p class="note">Chọn 1 chủ đề, chuẩn bị 1 phút, nói 2 đến 3 phút. Cấu trúc: mở bài 15 đến 20 giây, 2 đến 3 ý chính (mỗi ý có lý do và ví dụ), kết bài 15 đến 20 giây.</p><div>${FINAL.p2.map((x,i)=>qCard(x,i,'',"p2")).join('')}</div>
+  <p class="note">Bản tiếng Việt do em dịch để chị nắm ý, không phải bản chính thức của cô.</p>
+  <p class="row"><button class="btn" type="button" data-go="mock">Luyện thi nói, thu âm và chấm điểm</button></p></div>`;
+  $('#sv').onchange=e=>{store.set('showVi',e.target.checked);$('#fin').classList.toggle('noVi',!e.target.checked)}};
+
+/* ---------- Luyện thi nói: thu âm, nghe lại, chấm điểm ---------- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const CONTR={"don't":"do not","doesn't":"does not","didn't":"did not","can't":"can not","cannot":"can not","won't":"will not","isn't":"is not","aren't":"are not","wasn't":"was not","weren't":"were not","haven't":"have not","hasn't":"has not","hadn't":"had not","wouldn't":"would not","shouldn't":"should not","couldn't":"could not","i'm":"i am","i've":"i have","i'd":"i would","i'll":"i will","it's":"it is","that's":"that is","there's":"there is","what's":"what is","he's":"he is","she's":"she is","we're":"we are","they're":"they are","you're":"you are","let's":"let us","we've":"we have","they've":"they have","you've":"you have","we'll":"we will","they'll":"they will","who's":"who is"};
+const HOMO={too:'to',two:'to',their:'there',four:'for',hear:'here'};
+const ONES=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'],TENS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function numWords(n){if(n<20)return ONES[n];if(n<100)return TENS[Math.floor(n/10)]+(n%10?' '+ONES[n%10]:'');if(n<1000)return ONES[Math.floor(n/100)]+' hundred'+(n%100?' '+numWords(n%100):'');if(n<1e6)return numWords(Math.floor(n/1000))+' thousand'+(n%1000?' '+numWords(n%1000):'');return String(n)}
+function toks(s){s=String(s||'').toLowerCase().replace(/[’‘]/g,"'").replace(/%/g,' percent ').replace(/(\d),(\d)/g,'$1$2').replace(/-/g,' ');
+  const out=[];for(let w of (s.match(/[a-z0-9']+/g)||[])){w=w.replace(/^'+|'+$/g,'');if(!w)continue;if(CONTR[w]){out.push(...CONTR[w].split(' '));continue}w=w.replace(/'s$/,'');
+    if(/^\d+$/.test(w)){out.push(...numWords(+w).split(' '));continue}out.push(w)}return out}
+const canon=w=>HOMO[w]||w;
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+// 0 giống, 1 gần giống (sai âm cuối, đuôi), 2 khác
+function rel(a,b){if(a===b||canon(a)===canon(b))return 0;const L=Math.max(a.length,b.length),th=L>=8?2:L>=5?1:0;return th&&lev(a,b)<=th?1:2}
+function align(R,H){const n=R.length,m=H.length,D=Array.from({length:n+1},()=>new Float64Array(m+1)),T=Array.from({length:n+1},()=>new Uint8Array(m+1));
+  for(let i=1;i<=n;i++){D[i][0]=i;T[i][0]=2}for(let j=1;j<=m;j++){D[0][j]=j;T[0][j]=3}
+  for(let i=1;i<=n;i++)for(let j=1;j<=m;j++){const k=rel(R[i-1],H[j-1]),dg=D[i-1][j-1]+[0,.4,1.2][k],up=D[i-1][j]+1,lf=D[i][j-1]+1;
+    if(dg<=up&&dg<=lf){D[i][j]=dg;T[i][j]=1}else if(up<=lf){D[i][j]=up;T[i][j]=2}else{D[i][j]=lf;T[i][j]=3}}
+  const ops=[];let i=n,j=m;while(i>0||j>0){const t=T[i][j];if(t===1){ops.push({r:i-1,h:j-1,k:rel(R[i-1],H[j-1])});i--;j--}else if(t===2){ops.push({r:i-1,k:'d'});i--}else{ops.push({h:j-1,k:'i'});j--}}
+  return ops.reverse()}
+
+/* Phân tích âm thanh: tìm chỗ ngập ngừng (im lặng từ 1,2 giây trở lên giữa bài) */
+function makeMeter(stream){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;try{const ctx=new AC(),src=ctx.createMediaStreamSource(stream),an=ctx.createAnalyser();an.fftSize=1024;src.connect(an);const buf=new Float32Array(an.fftSize);
+  return{read(){an.getFloatTimeDomainData(buf);let s=0;for(let i=0;i<buf.length;i++)s+=buf[i]*buf[i];return Math.sqrt(s/buf.length)},close(){try{ctx.close()}catch(e){}}}}catch(e){return null}}
+function analyseLevels(lv){if(lv.length<10)return null;const so=[...lv].sort((a,b)=>a-b),fl=so[Math.floor(so.length*.05)],thr=Math.min(.04,Math.max(.012,fl*3)),sp=lv.map(v=>v>thr);
+  for(let i=0;i<sp.length;){if(!sp[i]){let j=i;while(j<sp.length&&!sp[j])j++;if(i>0&&j<sp.length&&j-i<3)for(let k=i;k<j;k++)sp[k]=true;i=j}else i++}
+  const first=sp.indexOf(true),last=sp.lastIndexOf(true);if(first<0)return{silent:true,total:lv.length/10};
+  const pauses=[];for(let i=first;i<=last;){if(!sp[i]){let j=i;while(j<=last&&!sp[j])j++;const len=(j-i)/10;if(len>=1.2)pauses.push({at:i/10,len});i=j}else i++}
+  const runs=[];let cur=sp[0],st=0;for(let i=1;i<=sp.length;i++){if(i===sp.length||sp[i]!==cur){const at=st/10,len=(i-st)/10;runs.push({s:cur,at,len,p:!cur&&st>first&&i<=last&&len>=1.2});cur=sp[i];st=i}}
+  return{thr,pauses,runs,speechSec:sp.filter(Boolean).length/10,total:lv.length/10,first:first/10,silent:false}}
+
+/* Lỗi ngữ pháp người Việt hay gặp (chỉ bắt được các lỗi phổ biến, máy chép lời hay tự sửa câu) */
+const GRAM=[
+ [/\b(he|she|it) (go|have|do|make|take|want|need|like|think|work|say|get|know|feel|come|give|use|help|become|look)\b/,'Sau he/she/it động từ thường cần thêm -s (he goes, she has).'],
+ [/\bpeople (is|was|has|does)\b/,'People là số nhiều: people are, people were, people have.'],
+ [/\bthere (is|was) (many|several|two|three|some people|a lot of people)\b/,'There are + danh từ số nhiều.'],
+ [/\bi am (agree|disagree|work|study|live|think)\b/,'Nói I agree, I work, I live, không thêm am.'],
+ [/\bmore (better|easier|cheaper|bigger|faster|safer|healthier|happier)\b/,'Đừng dùng more cùng tính từ đã có -er (nói better, easier).'],
+ [/\b(informations|advices|peoples|furnitures|equipments|knowledges)\b/,'Từ này không thêm -s (information, advice, people, equipment).'],
+ [/\bmany (money|time|information|advice|water|traffic)\b/,'Danh từ không đếm được dùng much, không dùng many.'],
+ [/\bmuch (people|friends|things|customers|farmers|products|ideas|students)\b/,'Danh từ đếm được số nhiều dùng many, không dùng much.'],
+ [/\b(discuss|emphasize|mention|attend) (about|on|to)\b/,'Các động từ discuss, emphasize, mention không đi với giới từ này.'],
+ [/\bdepends? (of|from)\b/,'Nói depend on.'],
+ [/\ba (?!(?:uni|use|usu|eur|one|ubiq))(?:hour|honest|[aeiou][a-z]*)\b/,'Trước âm nguyên âm dùng an (an idea, an hour), không dùng a.'],
+ [/\ban (?:uni|use|usu|eur|one)[a-z]*\b/,'Trước các từ như university, one, useful dùng a, không dùng an.'],
+ [/\b(did|does|do|didn't|doesn't|don't|can|could|will|would|should|must) (went|made|took|had|got|saw|came|gave|said|knew|thought)\b/,'Sau did/can/will... động từ về dạng gốc (did go, can make).'],
+ [/\bdidn't (went|made|took|had|got|saw|came|gave|said|knew|thought|\w+ed)\b/,'Sau didn\'t dùng động từ nguyên mẫu (didn\'t go).'],
+ [/\b(he|she|it|this|that) (are|were not|don't)\b/,'Chủ ngữ số ít dùng is, was, doesn\'t.'],
+ [/\bmore and more peoples?\b/,'Nói more and more people.'],
+];
+const ADV=new Set([...ALLW.map(x=>x.w.toLowerCase()),...['recognition','incentive','incentives','rotation','burnout','purpose','repetitive','meaningful','donate','volunteer','awareness','guarantee','reliable','storage','renewable','credibility','innovation','adopt','infrastructure','affordable','ethical','deceive','misleading','exaggerate','boundary','productive','flexible','bureaucracy','funding','observe','concentrate','pollution','investment','long-term','appearance','impression','consumers','responsibility','effective','convenient','advantage','disadvantage','significant','essential','particularly','generally','therefore','however','although','whereas','compared','balance','environment','community','policy','potential']]);
+const LINK={opinion:/\b(i think|i believe|in my opinion|i would say|i'd say|i agree|i disagree|to be honest|i feel)\b/,reason:/\b(one reason|another reason|first of all|firstly|secondly|second|third|the first|because|since|there are (two|three)|the main reason)\b/,example:/\b(for example|for instance|such as|take my|what i mean)\b/,contrast:/\b(on the other hand|however|although|while|whereas|compared with|but)\b/,conclusion:/\b(overall|in conclusion|to conclude|in the long run|finally|in short|to sum up|that's all)\b/};
+const clamp=(v,a=1,b=10)=>Math.max(a,Math.min(b,v)),r1=v=>Math.round(v*10)/10;
+
+/* Chấm khi nói tự do: ước lượng 4 tiêu chí của cô, mỗi tiêu chí 25% */
+function scoreFree(o){const heard=o.heard.trim(),T=toks(heard),n=T.length,secs=Math.max(1,o.secs),au=o.au,x=o.x,goal=o.goal;
+  const out={fix:[],crit:[],n,wpm:Math.round(n*60/secs)};const pauses=au&&au.pauses?au.pauses:[];out.pauses=pauses;
+  /* Trôi chảy */
+  let fl=10,fn=[];if(pauses.length>2){fl-=Math.min(5,.8*(pauses.length-2));fn.push(`${pauses.length} chỗ ngập ngừng từ 1,2 giây (cô cho 9 đến 10 điểm nếu chỉ 1 đến 2 lần)`)}else fn.push(`chỉ ${pauses.length} chỗ ngập ngừng`);
+  if(n){if(out.wpm<80){fl-=Math.min(3,(80-out.wpm)/15);fn.push(`nói hơi chậm (${out.wpm} từ/phút)`)}else if(out.wpm>180){fl-=Math.min(2,(out.wpm-180)/25);fn.push(`nói hơi nhanh (${out.wpm} từ/phút)`)}else fn.push(`tốc độ ${out.wpm} từ/phút`)}
+  if(secs<goal[0]){fl-=Math.min(3.5,(goal[0]-secs)/goal[0]*5);fn.push(`mới nói ${secs} giây, mục tiêu ${goal[0]} đến ${goal[1]} giây`)}
+  const fills=(heard.toLowerCase().match(/\b(um|uh|er|erm|hmm|you know|i mean)\b/g)||[]).length;if(fills){fl-=Math.min(2,.4*fills);fn.push(`${fills} tiếng đệm`)}
+  out.crit.push({k:'Fluency (trôi chảy)',s:r1(clamp(fl)),note:fn.join('; ')});
+  pauses.slice(0,5).forEach(p=>out.fix.push({t:`Ngập ngừng ${p.len.toFixed(1)} giây ở giây thứ ${Math.round(p.at)}`,seek:p.at,tip:'Nghe lại đoạn này. Khi bí ý, dùng câu đệm: Well, let me think… / What I mean is… / Let’s say…'}));
+  if(!n)return out.empty=true,out;
+  /* Phát âm: độ tự tin của máy + các từ máy nghe không chắc */
+  let cw=0,cs=0;const unsure=[];(o.segs||[]).forEach(sg=>{const w=sg.text.trim().split(/\s+/).filter(Boolean).length;if(sg.conf>0){cw+=w;cs+=w*sg.conf}(sg.unsure||[]).forEach(u=>unsure.push(u))});
+  const conf=cw?cs/cw:null,uset=[...new Set(unsure.map(u=>u.toLowerCase()))];out.conf=conf;out.unsure=uset;
+  let pr=null,pn='';if(conf!=null){pr=1+9*clamp((conf-.5)/.42,0,1);pr-=Math.min(2,uset.length/n*8);pn=`máy hiểu đúng khoảng ${Math.round(conf*100)}% lời chị nói`+(uset.length?`; ${uset.length} từ máy nghe chưa chắc`:'')}else pn='máy không cho điểm tin cậy';
+  out.crit.push({k:'Pronunciation (phát âm)',s:pr==null?null:r1(clamp(pr)),note:pn});
+  if(uset.length)out.fix.push({t:`Từ máy nghe chưa chắc: ${uset.slice(0,12).join(', ')}`,words:uset.slice(0,12),tip:'Bấm loa nghe cách đọc đúng, đọc lại từng từ rồi nói cả câu.'});
+  /* Nội dung */
+  const kws=x.words.split(',').map(s=>s.trim().toLowerCase()).filter(Boolean),stemOf=w=>w.slice(0,Math.min(5,w.length)),tset=T.map(stemOf);
+  const hit=kws.filter(k=>k.split(/[\s-]+/).every(p=>tset.includes(stemOf(p)))),miss=kws.filter(k=>!hit.includes(k));
+  const low=' '+heard.toLowerCase().replace(/[’‘]/g,"'")+' ';const used=Object.keys(LINK).filter(k=>LINK[k].test(low)),lack=Object.keys(LINK).filter(k=>!used.includes(k));
+  const stop=new Set('the a an and or of to in on at is are was were be it this that for with as by from have has had not but we you they he she i my your our their so if can will would should could do does did there then than also very more most one two three about into when what which who how why'.split(' '));
+  const sm=new Set(toks(x.a).filter(w=>!stop.has(w)&&w.length>3)),sp=new Set(T.filter(w=>!stop.has(w)&&w.length>3)),ov=sm.size?[...sp].filter(w=>sm.has(w)).length/sm.size:0;
+  const mid=(goal[0]+goal[1])/2,wantW=mid*120/60,lenR=Math.min(1,n/wantW);
+  const ct=clamp(1+9*(.28*(hit.length/kws.length)+.22*Math.min(1,ov/.3)+.25*(used.length/5)+.25*lenR));
+  out.crit.push({k:'Content (nội dung)',s:r1(ct),note:`dùng ${hit.length}/${kws.length} từ khóa gợi ý, ${used.length}/5 loại câu nối ý (ý kiến, lý do, ví dụ, đối chiếu, kết luận), ${n} từ`});
+  if(miss.length)out.fix.push({t:`Chưa dùng từ khóa gợi ý: ${miss.join(', ')}`,tip:'Thêm 1 đến 2 từ này vào ý chính hoặc ví dụ để nội dung chắc hơn.'});
+  const nm={opinion:'nêu ý kiến (I think…)',reason:'nêu lý do (One reason is…)',example:'cho ví dụ (For example…)',contrast:'nói hai mặt (On the other hand…)',conclusion:'kết luận (Overall…)'};
+  if(!used.includes('reason')||!used.includes('example'))out.fix.push({t:`Thiếu: ${lack.filter(k=>k==='reason'||k==='example').map(k=>nm[k]).join(', ')}`,tip:'Cô yêu cầu mỗi ý có lý do và ví dụ.'});
+  if(!used.includes('conclusion'))out.fix.push({t:'Chưa có câu kết bài',tip:'Kết bằng Overall, I’d say… hoặc In conclusion… rồi nói That’s all, thank you.'});
+  if(n<wantW*.6)out.fix.push({t:`Bài hơi ngắn: ${n} từ, nên khoảng ${Math.round(wantW)} từ`,tip:'Thêm một lý do và một ví dụ nữa.'});
+  /* Từ vựng và ngữ pháp */
+  const advN=T.filter(w=>ADV.has(w)||w.length>=8).length,advR=advN/n,div=new Set(T).size/n;
+  const qT=toks(x.q);let cp=0,tot=Math.max(1,qT.length-3);const tj=' '+T.join(' ')+' ';for(let i=0;i+4<=qT.length;i++)if(tj.includes(' '+qT.slice(i,i+4).join(' ')+' '))cp++;const copied=cp/tot>.45;
+  const errs=GRAM.filter(([re])=>re.test(low)).map(([re,msg])=>({m:(low.match(re)||[''])[0].trim(),msg}));out.errs=errs;
+  const vg=clamp(2+8*(.4*Math.min(1,advR/.2)+.2*Math.min(1,div/.6)+.4*(1-Math.min(1,errs.length/3)))-(copied?1:0));
+  out.crit.push({k:'Vocabulary and grammar (từ vựng, ngữ pháp)',s:r1(vg),note:`${Math.round(advR*100)}% từ khá khó (cô muốn khoảng 20% trở lên)${errs.length?`; ${errs.length} lỗi ngữ pháp thường gặp`:'; chưa thấy lỗi ngữ pháp phổ biến'}${copied?'; lặp lại gần nguyên câu hỏi':''}`});
+  errs.forEach(e=>out.fix.push({t:`Ngữ pháp: “${e.m}”`,tip:e.msg}));
+  if(copied)out.fix.push({t:'Lặp lại gần nguyên câu hỏi',tip:'Cô dặn đừng lặp lại câu hỏi. Diễn đạt lại bằng từ khác rồi trả lời thẳng.'});
+  if(advR<.12)out.fix.push({t:`Từ vựng còn đơn giản (${Math.round(advR*100)}% từ khá khó)`,tip:'Thêm từ nâng cao trong ô Từ vựng gợi ý của câu này.'});
+  return out}
+
+/* Chấm khi đọc theo bài mẫu: so từng từ máy nghe được với bài mẫu */
+function scoreRead(o){const ref=o.ref,refDisp=ref.split(/\s+/).filter(Boolean),U=[];refDisp.forEach((d,di)=>toks(d).forEach(w=>U.push({w,d:di})));
+  const H=toks(o.heard),ops=align(U.map(u=>u.w),H),st=U.map(()=>({k:'d'}));let ok=0,cl=0,bad=0,miss=0,extra=0;
+  ops.forEach(p=>{if(p.k==='i'){extra++;return}if(p.k==='d'){miss++;st[p.r]={k:'d'};return}if(p.k===0){ok++;st[p.r]={k:'m'}}else if(p.k===1){cl++;st[p.r]={k:'c',h:H[p.h]}}else{bad++;st[p.r]={k:'s',h:H[p.h]}}});
+  let tail=0;for(let i=U.length-1;i>=0&&st[i].k==='d';i--)tail++;
+  const N=U.length,acc=N?(ok+.5*cl)/N:0,seen=N-tail,accSeen=seen?(ok+.5*cl)/seen:0;
+  const rank={m:0,c:1,d:2,s:3},dispS=refDisp.map(()=>({k:'m'}));
+  U.forEach((u,i)=>{if(rank[st[i].k]>rank[dispS[u.d].k])dispS[u.d]=st[i]});
+  return{refDisp,dispS,ok,cl,bad,miss,extra,N,acc,accSeen,tail,H}}
+
+/* ---------- Kiểm tra trình duyệt ---------- */
+function browserName(){const u=navigator.userAgent;if(/coc_coc/i.test(u))return'Cốc Cốc';if(/Edg\//.test(u))return'Microsoft Edge';if(/OPR\//.test(u))return'Opera';if(/Firefox\//.test(u))return'Firefox';if(/Chrome\//.test(u))return'Google Chrome';if(/Safari\//.test(u))return'Safari';return'trình duyệt lạ'}
+function diag(){const b=browserName(),good=!!SR,it=[];
+  it.push([!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia),'Truy cập micro','Cần để thu âm.']);
+  it.push([!!window.MediaRecorder,'Thu âm lưu lại để nghe lại','Cần để nghe lại bài mình nói.']);
+  it.push([!!SR,'Chép lời bằng giọng nói (máy tự nghe chữ)','Cần để chấm sai đúng. Có ở Chrome và Edge, không có ở Firefox.']);
+  it.push([!!(window.AudioContext||window.webkitAudioContext),'Phân tích âm thanh','Cần để bắt chỗ ngập ngừng.']);
+  it.push([navigator.onLine,'Có mạng Internet','Chép lời của Chrome và Edge chạy qua mạng.']);
+  return{b,good,it,all:it.every(r=>r[0])&&good}}
+function diagHTML(){const d=diag(),file=location.protocol==='file:';
+  return`<details class="card" id="dg" ${d.all?'':'open'}><summary><b>Kiểm tra micro và trình duyệt</b> <span class="tag ${d.all?'':'hot'}">${d.all?'Sẵn sàng':'Cần chỉnh'}</span></summary>
+  <p class="note">Đang dùng: <b>${esc(d.b)}</b>. ${d.good?'':'<b>Nên mở bằng Google Chrome hoặc Microsoft Edge</b> để có chép lời và chấm điểm.'}</p>
+  <ul class="tips">${d.it.map(r=>`<li>${r[0]?'✅':'❌'} <b>${r[1]}</b>: ${r[0]?'có':'thiếu'}. <span class="note">${r[2]}</span></li>`).join('')}</ul>
+  ${file?'<p class="note">Trang đang mở trực tiếp từ file nên Chrome sẽ hỏi quyền micro mỗi lần mở trang. Chị bấm Cho phép là được.</p>':''}
+  <p class="row"><button class="btn ghost" type="button" id="mt">Thử micro 6 giây</button></p><div id="mtr" class="note"></div></details>`}
+async function testMic(box){box.innerHTML='Đang xin quyền micro. Chị bấm Cho phép nhé.';let stream;
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){box.innerHTML=`<b class="bad">Không bật được micro</b> (${esc(e.name||e.message)}). Bấm ổ khóa cạnh thanh địa chỉ, chọn Cho phép micro, rồi thử lại. Nếu vẫn không được: Cài đặt Windows, Quyền riêng tư, Micrô, bật cho trình duyệt. Hoặc chưa cắm micro/tai nghe.`;return}
+  const mt=makeMeter(stream);let peak=0,heard='',err='',left=6;
+  box.innerHTML='<p>Chị nói thử: <b>Hello, my name is…</b> (6 giây)</p><div class="meter"><i id="mtl"></i></div><p id="mtt"></p><p id="mts" class="note"></p>';
+  let sr=null;if(SR){try{sr=new SR();sr.lang='en-US';sr.continuous=true;sr.interimResults=true;sr.onresult=e=>{heard='';for(let i=0;i<e.results.length;i++)heard+=e.results[i][0].transcript+' ';$('#mts').textContent='Máy nghe được: '+heard};sr.onerror=e=>{err=e.error};sr.start()}catch(e){err='start'}}
+  const iv=setInterval(()=>{const v=mt?mt.read():0;peak=Math.max(peak,v);const el=$('#mtl');if(el)el.style.width=Math.min(100,v*600)+'%'},100);
+  const tk=setInterval(()=>{left--;const e=$('#mtt');if(e)e.textContent=`Còn ${left} giây`;if(left<=0){clearInterval(tk);clearInterval(iv);try{sr&&sr.stop()}catch(e){}stream.getTracks().forEach(t=>t.stop());mt&&mt.close();
+    setTimeout(()=>{const lvl=peak>.03?'✅ Micro thu được tiếng.':'❌ Micro gần như không thu được tiếng. Kiểm tra micro, tăng âm lượng thu trong Windows, hoặc nói to hơn.';
+      let sm=!SR?'❌ Trình duyệt này không có chép lời. Dùng Chrome hoặc Edge.':heard.trim()?'✅ Máy nghe ra chữ: “'+esc(heard.trim())+'”.':err==='not-allowed'||err==='service-not-allowed'?'❌ Chép lời bị chặn. Cho phép micro cho trang này.':err==='network'?'❌ Chép lời cần Internet. Kiểm tra mạng.':'⚠️ Chưa nghe ra chữ nào. Nói rõ và gần micro hơn rồi thử lại.';
+      box.innerHTML=`<p>${lvl}</p><p>${sm}</p>`},900)}},1000)}
+
+/* ---------- Màn hình luyện ---------- */
+const hist=()=>store.get('mockHist',[]);
+views.mock=arg=>{const part=arg==='p2'?'p2':(arg==='p1'?'p1':store.get('mpart','p1'));store.set('mpart',part);
+  const list=part==='p1'?FINAL.p1:FINAL.p2,vi=VIF[part],H=hist().slice(-6).reverse();
+  $('#main').innerHTML=`<h1>Luyện thi nói</h1>${diagHTML()}<div class="seg"><button class="chip" type="button" data-go="mock" data-arg="p1" aria-pressed="${part==='p1'}">Phần 1: 8 câu hỏi</button><button class="chip" type="button" data-go="mock" data-arg="p2" aria-pressed="${part==='p2'}">Phần 2: 5 chủ đề</button></div>
+  <p class="sub">${part==='p1'?'Chọn một câu rồi nói khoảng 40 đến 60 giây. Thi thật chọn ít nhất 3 câu.':'Chọn một chủ đề. Có 1 phút chuẩn bị, sau đó nói 2 đến 3 phút.'} Máy thu âm, nghe chữ chị nói, chỉ ra chỗ sai và chấm điểm theo 4 tiêu chí của cô.</p>
+  <div class="row"><button class="btn" type="button" id="rnd">Chọn ngẫu nhiên</button></div>
+  <div class="opts">${list.map((x,i)=>`<button class="opt" type="button" data-i="${i}">${i+1}. ${esc(x.q)}<span class="vi">${esc(vi[i].q)}</span></button>`).join('')}</div><div id="sess"></div>
+  ${H.length?`<h2>Các lần luyện gần đây</h2><div class="tw"><table><thead><tr><th>Ngày</th><th>Câu</th><th>Cách</th><th>Điểm</th></tr></thead><tbody>${H.map(h=>`<tr><td>${esc(h.d)}</td><td>${h.p==='p1'?'Phần 1':'Phần 2'} câu ${h.i+1}</td><td>${h.m==='read'?'Đọc bài mẫu':'Nói tự do'}</td><td class="num"><b>${h.t==null?'-':h.t}</b></td></tr>`).join('')}</tbody></table></div>`:''}`;
+  const open=i=>{window._mockStop&&window._mockStop();session($('#sess'),list[i],part,i);$('#sess').scrollIntoView({behavior:'smooth'})};
+  $$('.opt').forEach(b=>b.onclick=()=>open(+b.dataset.i));$('#rnd').onclick=()=>open(Math.floor(Math.random()*list.length));
+  const mt=$('#mt');if(mt)mt.onclick=()=>testMic($('#mtr'));if(window._pendq!=null){const q=window._pendq;window._pendq=null;open(q)}};
+
+function session(box,x,part,qi){
+  const mode=store.get('mmode','free'),read=mode==='read',prep=(part==='p2'&&!read)?60:0,goal=part==='p1'?[40,60]:[120,180];
+  let stage=prep?'prep':'ready',t=prep,rec=null,stream=null,chunks=[],sr=null,srFatal='',tick=null,lvt=null,startAt=0,mtr=null,levels=[],segs=[],interim='',srDone=null;
+  const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(Math.floor(s%60)).padStart(2,'0');
+  const hideOut=store.get('hideOut',false);
+  box.innerHTML=`<section class="card"><h3>${esc(x.q)}</h3><span class="vi">${esc(VIF[part][qi].q)}</span>
+   <div class="seg"><button class="chip" type="button" data-m="free" aria-pressed="${!read}">Nói tự do (như thi thật)</button><button class="chip" type="button" data-m="read" aria-pressed="${read}">Đọc theo bài mẫu (máy chỉ chỗ sai)</button></div>
+   ${read?`<p class="note">Chị đọc to cả bài mẫu bên dưới. Máy nghe từng từ, so với bài mẫu, rồi tô <span class="w-ok">xanh</span> chỗ đúng, <span class="w-bad">đỏ</span> chỗ sai, <span class="w-miss">gạch ngang</span> chỗ bỏ sót.</p><div class="sample"><p class="pr-sent" id="refx">${esc(x.a)}</p><p class="row" style="margin:6px 0"><button class="btn ghost" type="button" data-say="${esc(x.a)}">🔊 Nghe giọng mẫu trước</button></p></div>`
+   :`<label class="toggle noprint"><input type="checkbox" id="ho" ${hideOut?'checked':''}> Giấu dàn ý và từ gợi ý (như thi thật)</label><div id="hint" class="${hideOut?'hide':''}"><p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ gợi ý:</b> ${esc(x.words)}</p></div>
+   ${prep?`<div id="prepbox"><p class="note">Chuẩn bị 1 phút. Ghi nhanh dàn ý (không dùng slide).</p><textarea id="notes" rows="4" placeholder="Mở bài... Ý 1... Ý 2... Kết bài..."></textarea></div>`:''}`}
+   <div class="big-t" id="clock">${fmt(t)}</div><div class="meter hide" id="mtrw"><i id="mtrl"></i></div><p class="note" id="st"></p><p class="pr-live" id="live"></p>
+   <div class="row"><button class="btn" type="button" id="go">${prep?'Bắt đầu chuẩn bị':'Bắt đầu nói'}</button><button class="btn ghost hide" type="button" id="stop">Dừng</button></div>
+   <div id="res"></div></section>`;
+  const clock=$('#clock'),st=$('#st'),goB=$('#go'),stopB=$('#stop'),live=$('#live');
+  $$('[data-m]',box).forEach(b=>b.onclick=()=>{if(stage==='speak'||stage==='prepping')return;store.set('mmode',b.dataset.m);window._mockStop&&window._mockStop();session(box,x,part,qi)});
+  const ho=$('#ho');if(ho)ho.onchange=()=>{store.set('hideOut',ho.checked);$('#hint').classList.toggle('hide',ho.checked)};
+  const cleanup=()=>{clearInterval(tick);clearInterval(lvt);try{sr&&(sr.onend=null,sr.abort())}catch(e){}try{rec&&rec.state!=='inactive'&&rec.stop()}catch(e){}if(stream)stream.getTracks().forEach(tr=>tr.stop());stream=null;mtr&&mtr.close();mtr=null};
+  window._mockStop=()=>{stage='done';cleanup()};
+  const startSpeak=async()=>{stage='speak';startAt=Date.now();t=0;clock.textContent=fmt(0);clock.classList.remove('low');goB.classList.add('hide');stopB.classList.remove('hide');stopB.textContent='Dừng';
+    st.textContent=read?'Đang nghe chị đọc. Đọc rõ từng từ, tốc độ vừa. Đọc xong bấm Dừng.':`Đang nói. Mục tiêu ${goal[0]} đến ${goal[1]} giây.`;
+    try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){st.innerHTML='<b class="bad">Không bật được micro.</b> Bấm ổ khóa cạnh thanh địa chỉ, chọn Cho phép micro. Vẫn bấm giờ cho chị.'}
+    if(stage!=='speak'){if(stream)stream.getTracks().forEach(tr=>tr.stop());return}
+    if(stream){if(window.MediaRecorder){try{chunks=[];rec=new MediaRecorder(stream);rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};rec.start(1000)}catch(e){rec=null}}
+      mtr=makeMeter(stream);$('#mtrw').classList.remove('hide');lvt=setInterval(()=>{const v=mtr?mtr.read():0;levels.push(v);const el=$('#mtrl');if(el)el.style.width=Math.min(100,v*600)+'%'},100)}
+    if(SR&&stream){try{sr=new SR();sr.lang='en-US';sr.continuous=true;sr.interimResults=true;sr.maxAlternatives=3;
+      sr.onresult=e=>{interim='';for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i],tx=r[0].transcript;if(r.isFinal){segs.push({text:tx,conf:r[0].confidence,alts:Array.from(r).slice(1).map(a=>a.transcript)})}else interim+=tx+' '}
+        live.textContent='Máy nghe được: '+segs.map(s=>s.text).join(' ')+' '+interim};
+      sr.onerror=e=>{const c=e.error;if(c==='not-allowed'||c==='service-not-allowed'){srFatal='blocked';st.innerHTML='<b class="bad">Chép lời bị chặn.</b> Vẫn thu âm nhưng chưa chấm chữ được.'}else if(c==='network'){srFatal='network';st.innerHTML='<b class="bad">Chép lời cần Internet.</b> Vẫn thu âm, nhưng chưa chấm chữ được.'}else if(c==='audio-capture'){srFatal='mic';st.innerHTML='<b class="bad">Không thấy micro.</b>'}};
+      sr.onend=()=>{if(stage==='speak'&&!srFatal){setTimeout(()=>{try{if(stage==='speak')sr.start()}catch(e){}},150)}else if(srDone)srDone()};sr.start()}catch(e){sr=null}}
+    startAt=Date.now();tick=setInterval(()=>{t=Math.floor((Date.now()-startAt)/1000);clock.textContent=fmt(t);if(!read&&t>=goal[1])clock.classList.add('low')},500)};
+  const stopAll=async()=>{clearInterval(tick);clearInterval(lvt);const w=[];
+    if(sr&&!srFatal)w.push(new Promise(res=>{const to=setTimeout(res,2500);srDone=()=>{clearTimeout(to);res()};try{sr.stop()}catch(e){res()}}));
+    if(rec&&rec.state!=='inactive')w.push(new Promise(res=>{const to=setTimeout(res,2000);rec.onstop=()=>{clearTimeout(to);res()};try{rec.stop()}catch(e){res()}}));
+    await Promise.all(w);if(stream)stream.getTracks().forEach(tr=>tr.stop());stream=null;mtr&&mtr.close();mtr=null};
+  const finish=async()=>{if(stage!=='speak')return;stage='done';const secs=Math.max(1,Math.round((Date.now()-startAt)/1000));stopB.classList.add('hide');st.textContent='Đang xử lý và chấm điểm...';$('#mtrw').classList.add('hide');
+    await stopAll();goB.classList.remove('hide');goB.textContent='Làm lại';st.textContent='';live.textContent='';
+    segs.forEach(sg=>{sg.unsure=unsureWords(sg)});
+    const heard=segs.map(s=>s.text.trim()).join(' '),au=analyseLevels(levels),url=chunks.length?URL.createObjectURL(new Blob(chunks,{type:(rec&&rec.mimeType)||'audio/webm'})):null;
+    const audioH=url?`<p class="note">Nghe lại bài của chị (bấm vào thanh bên dưới để nhảy tới chỗ ngập ngừng):</p><audio controls id="au" src="${url}" style="width:100%"></audio>`:'<p class="note">Không thu âm được. Bấm “Thử micro 6 giây” ở đầu trang để kiểm tra.</p>';
+    const strip=au&&au.runs?`<div class="strip" aria-label="Đoạn nói và im lặng">${au.runs.map(r=>`<i class="${r.s?'s':r.p?'p':'q'}" style="flex:${r.len}" data-t="${r.at}" title="${r.s?'Đang nói':r.p?'Ngập ngừng '+r.len.toFixed(1)+' giây':'Im lặng ngắn'}"></i>`).join('')}</div><p class="note">Xanh: đang nói. Đỏ: ngập ngừng từ 1,2 giây. Xám: nghỉ ngắn.</p>`:'';
+    let body='',total=null;
+    if(!SR||srFatal||!heard.trim()){const why=!SR?'Trình duyệt này không có chép lời (dùng Chrome hoặc Edge).':srFatal==='network'?'Chép lời cần Internet mà máy đang không có mạng.':srFatal==='blocked'?'Chép lời bị chặn quyền.':'Máy không nghe ra chữ nào. Kiểm tra micro, nói to hơn và gần micro hơn.';
+      body=`<p class="score bad">Chưa chấm chữ được. ${why}</p>${audioH}${strip}<p class="note">Độ dài: ${secs} giây${au&&au.pauses?`, ${au.pauses.length} chỗ ngập ngừng`:''}. Chị nghe lại rồi tự chấm 4 tiêu chí.</p>${selfGrade()}`}
+    else if(read){const r=scoreRead({ref:x.a,heard}),wpm=Math.round(r.H.length*60/secs),pa=au&&au.pauses?au.pauses:[];
+      let fl=10;fl-=Math.min(5,.8*Math.max(0,pa.length-2));if(wpm<80)fl-=Math.min(3,(80-wpm)/15);if(wpm>180)fl-=Math.min(2,(wpm-180)/25);
+      const pron=clamp(r.accSeen*10+.3),cov=clamp(r.N?(r.N-r.miss)/r.N*10:1),flS=clamp(fl);total=r1((pron+flS+cov)/3);
+      const bads=[];r.dispS.forEach((s,i)=>{if(s.k==='s'||s.k==='c')bads.push({w:r.refDisp[i].replace(/[^A-Za-z'’-]/g,''),h:s.h,k:s.k})});const seen=new Set(),bl=bads.filter(b=>b.w&&!seen.has(b.w.toLowerCase())&&seen.add(b.w.toLowerCase()));
+      const sent=r.refDisp.map((w,i)=>{const s=r.dispS[i];const c=s.k==='m'?'w-ok':s.k==='c'?'w-close':s.k==='s'?'w-bad':'w-miss';return`<span class="${c}"${s.h?` title="Máy nghe thành: ${esc(s.h)}"`:''}>${esc(w)}</span>`}).join(' ');
+      body=`<div class="pr-res"><div class="pr-pct ${r.accSeen>=.85?'good':'bad'}">${Math.round(r.accSeen*100)}% đúng</div><p class="note">${r.ok} từ đúng, ${r.cl} gần đúng (có thể sai âm cuối), ${r.bad} từ sai, ${r.miss} từ bỏ sót${r.tail?` (trong đó ${r.tail} từ ở cuối bài, chị chưa đọc tới)`:''}, ${r.extra} từ thêm.</p>
+       <p class="pr-sent">${sent}</p><p class="note"><span class="w-ok">Xanh</span> đúng · <span class="w-close">Vàng gạch</span> gần đúng, kiểm tra âm cuối · <span class="w-bad">Đỏ</span> sai hoặc máy không nhận ra (rê chuột để xem máy nghe thành gì) · <span class="w-miss">Gạch ngang</span> bỏ sót</p>
+       ${bl.length?`<h4>Từ cần luyện lại</h4><ul class="pr-fix">${bl.slice(0,15).map(b=>`<li>${sayBtn(b.w)} <b class="en">${esc(b.w)}</b><small>máy nghe thành “${esc(b.h)}”${b.k==='c'?' (gần đúng, xem lại âm cuối -s, -ed, -ing)':''}</small></li>`).join('')}</ul>`:'<p class="score good">Không có từ nào sai. Đọc rất tốt.</p>'}
+       <h4>Điểm đọc theo bài mẫu</h4>${critBars([{k:'Pronunciation (đọc đúng từ)',s:r1(pron),note:`${Math.round(r.accSeen*100)}% từ khớp bài mẫu`},{k:'Fluency (trôi chảy)',s:r1(flS),note:`${pa.length} chỗ ngập ngừng, ${wpm} từ/phút`},{k:'Đọc đủ bài',s:r1(cov),note:`bỏ sót ${r.miss}/${r.N} từ`}])}
+       <p class="score">Điểm đọc: ${total}/10</p>${audioH}${strip}<p class="note">Máy chép lời có thể nghe nhầm một vài từ dù chị đọc đúng. Nghe lại để chắc chắn, nhất là với từ đỏ.</p></div>`}
+    else{const r=scoreFree({heard,segs,au,secs,x,goal}),sc=r.crit.filter(c=>c.s!=null);total=r1(sc.reduce((a,c)=>a+c.s,0)/sc.length);
+      const tx=segs.map(sg=>{const un=new Set((sg.unsure||[]).map(u=>u.toLowerCase()));return sg.text.trim().split(/\s+/).map(w=>un.has(simple(w))?`<span class="w-bad">${esc(w)}</span>`:esc(w)).join(' ')}).join(' ');
+      body=`<div class="pr-res"><div class="pr-pct ${total>=7?'good':'bad'}">${total}/10</div><p class="note">Điểm ước lượng theo 4 tiêu chí của cô (mỗi tiêu chí 25%). Máy chấm tham khảo, không thay giám khảo.</p>${critBars(r.crit)}
+       ${r.fix.length?`<h4>Chỗ cần sửa</h4><ul class="pr-fix">${r.fix.map(f=>`<li>${f.seek!=null?`<button class="link" type="button" data-seek="${f.seek}">▶ nghe</button>`:''}<b>${esc(f.t)}</b>${(f.words||[]).map(w=>sayBtn(w)).join('')}<small>${esc(f.tip)}</small></li>`).join('')}</ul>`:'<p class="score good">Chưa thấy chỗ nào cần sửa nổi bật.</p>'}
+       <h4>Chữ máy nghe được</h4><p class="en">${tx}</p><p class="note">Từ gạch đỏ là chỗ máy nghe chưa chắc, có thể chị phát âm chưa rõ.</p>${audioH}${strip}</div>`}
+    $('#res').innerHTML=body;
+    const h=hist();h.push({d:new Date().toLocaleDateString('vi-VN'),p:part,i:qi,m:read?'read':'free',t:total});store.set('mockHist',h.slice(-30));
+    const au2=$('#au');$$('[data-seek]',box).forEach(b=>b.onclick=()=>{if(au2){au2.currentTime=+b.dataset.seek;au2.play()}});$$('.strip i',box).forEach(i=>i.onclick=()=>{if(au2){au2.currentTime=+i.dataset.t;au2.play()}});
+    const sg=$$('input[type=range]',box);if(sg.length)sg.forEach(r=>r.oninput=()=>{const v=sg.map(z=>+z.value);v.forEach((z,i)=>$('#v'+i).textContent=z);$('#tot').textContent='Điểm tự chấm: '+(v.reduce((a,b)=>a+b,0)/4).toFixed(1)});
+    $('#res').scrollIntoView({behavior:'smooth'})};
+  goB.onclick=()=>{if(stage==='done'){session(box,x,part,qi);return}
+    if(prep&&stage==='prep'){stage='prepping';goB.classList.add('hide');st.textContent='Đang chuẩn bị. Hết giờ sẽ tự chuyển sang nói.';
+      tick=setInterval(()=>{t--;clock.textContent=fmt(Math.max(t,0));if(t<=10)clock.classList.add('low');if(t<=0){clearInterval(tick);startSpeak()}},1000);
+      stopB.classList.remove('hide');stopB.textContent='Nói luôn';stopB.onclick=()=>{clearInterval(tick);stopB.onclick=finish;startSpeak()};return}
+    startSpeak()};
+  stopB.onclick=finish}
+const simple=w=>w.toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9']/g,'');
+function unsureWords(sg){const dw=sg.text.trim().split(/\s+/).filter(Boolean),sw=dw.map(simple),flag=new Set();
+  (sg.alts||[]).forEach(a=>{const aw=a.trim().split(/\s+/).filter(Boolean).map(simple);align(sw,aw).forEach(p=>{if(p.r!=null&&(p.k==='d'||p.k===2))flag.add(p.r)})});
+  const short=new Set('a an the of to in on at is are was and or it i we you he she they my'.split(' '));
+  return[...flag].map(i=>sw[i]).filter(w=>w&&w.length>2&&!short.has(w))}
+const critBars=a=>`<div class="crit">${a.map(c=>`<div class="rng"><span><b>${esc(c.k)}</b><small class="note" style="display:block">${esc(c.note)}</small></span><b class="num ${c.s==null?'':c.s>=7?'good':'bad'}">${c.s==null?'-':c.s}</b><div class="bar" style="grid-column:1/-1"><i style="width:${c.s==null?0:c.s*10}%"></i></div></div>`).join('')}</div>`;
+const selfGrade=()=>`<h4>Tự chấm (mỗi tiêu chí 25%)</h4>${['Fluency (trôi chảy)','Pronunciation (phát âm)','Content (ý và ví dụ)','Vocabulary and grammar'].map((l,i)=>`<div class="rng"><label for="r${i}">${l}</label><b id="v${i}">7</b><input id="r${i}" type="range" min="1" max="10" value="7"></div>`).join('')}<p class="score" id="tot">Điểm tự chấm: 7.0</p>`;
+
+/* ---------- Bài học ---------- */
+views.learn=arg=>{const n=+arg||store.get('lu',1);store.set('lu',n);const u=UNITS[n-1];
+  $('#main').innerHTML=`${unitBar(n,'learn')}<h1>Unit ${n}: ${esc(u.title)}</h1><p class="sub">${esc(u.vi)}</p>
+  <section class="card"><h3>Câu hỏi của Unit</h3><p class="en">${esc(u.q)} ${sayBtn(u.q)}</p></section>
+  <h2>Nội dung bài nghe</h2><div class="learn">${u.key.map(r=>`<section class="card"><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p></section>`).join('')}</div>
+  <h2>Kỹ năng và ngữ pháp trong Unit</h2><div class="learn">${u.skills.map(r=>`<section class="card"><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p></section>`).join('')}</div>
+  <p class="row"><button class="btn" type="button" data-go="vocab" data-arg="${n}">Học từ vựng Unit ${n}</button><button class="btn ghost" type="button" data-go="quiz" data-arg="${n}">Làm câu hỏi ôn Unit ${n}</button></p>`};
+
+/* ---------- Từ vựng ---------- */
+views.vocab=arg=>{const n=arg==null?store.get('vu',0):+arg;store.set('vu',n);const hideVi=store.get('hideVi',false),q=store.get('vq','');
+  $('#main').innerHTML=`${unitBar(n,'vocab',true)}<h1>Từ vựng</h1><p class="sub">Bấm ô để đánh dấu đã thuộc. Bấm loa để nghe. Phiên âm kiểu Anh-Mỹ, nên đối chiếu từ điển.</p>
+  <input class="search" id="vq" type="search" placeholder="Tìm từ hoặc nghĩa..." value="${esc(q)}"><label class="toggle"><input id="hv" type="checkbox" ${hideVi?'checked':''}> Che nghĩa để tự kiểm tra</label><div id="vl"></div>`;
+  const draw=()=>{const k=known(),t=($('#vq').value||'').toLowerCase(),hv=$('#hv').checked;
+    const rows=ALLW.filter(x=>(!n||x.u===n)&&(!t||(x.w+' '+x.vi).toLowerCase().includes(t)));
+    $('#vl').innerHTML=`<p class="note">${rows.length} từ, đã thuộc ${rows.filter(x=>k[x.w]).length}</p>`+tbl(['Thuộc','Từ','Phiên âm','','Nghĩa','Ví dụ'],rows.map(x=>`<tr><td><input type="checkbox" data-k="${esc(x.w)}" ${k[x.w]?'checked':''}></td><td><span class="en">${esc(x.w)}</span><span class="fam">${esc(x.pos)} · Unit ${x.u}</span></td><td class="ipa">${esc(x.ipa)}</td><td>${sayBtn(x.w)}</td><td>${hv?`<button class="link" type="button" onclick="this.parentNode.textContent=this.dataset.v" data-v="${esc(x.vi)}">Xem nghĩa</button>`:esc(x.vi)}</td><td><span class="en">${esc(x.ex)}</span></td></tr>`),'vt')};
+  $('#vq').oninput=e=>{store.set('vq',e.target.value);draw()};$('#hv').onchange=e=>{store.set('hideVi',e.target.checked);draw()};draw();
+  $('#vl').onchange=e=>{const c=e.target.closest('[data-k]');if(c){const k=known();k[c.dataset.k]=c.checked;store.set('known',k);const p=$('#vl .note');const t=$$('#vl [data-k]');if(p)p.textContent=`${t.length} từ, đã thuộc ${t.filter(z=>z.checked).length}`}}};
+
+/* ---------- Flashcard ---------- */
+views.cards=arg=>{const n=arg==null?store.get('cu',0):+arg;store.set('cu',n);const k=known();
+  let pool=shuffle(ALLW.filter(x=>(!n||x.u===n)&&!k[x.w]));const total=ALLW.filter(x=>!n||x.u===n).length;let i=0,flip=false;const m=$('#main');
+  const draw=()=>{if(!pool.length){m.innerHTML=`${unitBar(n,'cards',true)}<h1>Flashcard</h1><section class="card"><h3>Đã thuộc hết ${total} từ</h3><p class="note">Muốn ôn lại thì bỏ dấu thuộc ở mục Từ vựng.</p></section>`;return}
+    const x=pool[i%pool.length];
+    m.innerHTML=`${unitBar(n,'cards',true)}<h1>Flashcard</h1><p class="sub">Còn ${pool.length} từ chưa thuộc trong ${total} từ. Bấm thẻ để lật.</p>
+    <div class="flash" id="fc" role="button" tabindex="0">${flip?`<div><div class="big">${esc(x.vi)}</div><p class="ipa">${esc(x.w)} ${esc(x.ipa)}</p><p class="en">${esc(x.ex)}</p></div>`:`<div><div class="big">${esc(x.w)}</div><p class="ipa">${esc(x.ipa)} · ${esc(x.pos)}</p><p class="note">Nghĩa là gì?</p></div>`}</div>
+    <div class="row"><button class="btn ghost" type="button" id="fs">🔊 Nghe</button><button class="btn ghost" type="button" id="fn">Chưa nhớ</button><button class="btn" type="button" id="fk">Đã thuộc</button></div>`;
+    const fl=()=>{flip=!flip;draw()};$('#fc').onclick=fl;$('#fc').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fl()}};
+    $('#fs').onclick=()=>speak(x.w);$('#fn').onclick=()=>{i++;flip=false;draw()};
+    $('#fk').onclick=()=>{const kk=known();kk[x.w]=true;store.set('known',kk);pool.splice(i%pool.length,1);flip=false;draw()}};
+  draw()};
+
+/* ---------- Câu hỏi ôn ---------- */
+const opt4=(ans,pool)=>{const o=shuffle([ans,...pick([...new Set(pool.filter(p=>p!==ans))],3)]);return{o,a:o.indexOf(ans)}};
+const onQs=n=>ON.filter(g=>!n||g.unit===n).flatMap(g=>g.q.filter(q=>q.a!=null).map(q=>({t:'mc',q:`Unit ${g.unit}: ${q.q}`,o:q.o,a:q.a,why:q.confirm?('Lưu ý: '+q.confirm):'Đáp án lấy từ bài ôn trên trang trường.'})));
+const qVocab=(x,pool)=>{const{o,a}=opt4(x.vi,pool.map(p=>p.vi));return{t:'mc',q:`Nghĩa của "${x.w}" ${x.ipa} là gì?`,o,a,why:`${x.w} = ${x.vi}`}};
+const qWord=(x,pool)=>{const{o,a}=opt4(x.w,pool.map(p=>p.w));return{t:'mc',q:`Từ nào có nghĩa: "${x.vi}"?`,o,a,why:`${x.vi} = ${x.w}`}};
+const qCloze=(x,pool)=>{if(x.w.includes(' '))return null;const re=new RegExp('\\b'+x.w.slice(0,Math.max(3,x.w.length-3)).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\w*','i');if(!re.test(x.ex))return null;const{o,a}=opt4(x.w,pool.map(p=>p.w));return{t:'mc',q:'Điền từ: '+x.ex.replace(re,'_____'),o,a,why:`Đáp án: ${x.w}. ${x.ex}`}};
+const KINDS=[['on','Câu hỏi ôn của trường','toàn bộ câu đã có đáp án'],['vocab','Từ vựng (nghĩa)','20 câu'],['cloze','Điền từ vào câu','12 câu'],['listen','Hiểu bài nghe (đánh giá 1)','7 câu'],['mix','Thi thử tổng hợp','30 câu, 20 phút']];
+function build(kind,n){const W=ALLW.filter(x=>!n||x.u===n),nz=a=>a.filter(Boolean);
+  if(kind==='on')return shuffle(onQs(n));
+  if(kind==='vocab')return pick(W,Math.min(20,W.length)).map((x,i)=>i%2?qWord(x,ALLW):qVocab(x,ALLW));
+  if(kind==='cloze')return pick(nz(W.map(x=>qCloze(x,ALLW))),12);
+  if(kind==='listen')return LQ.map(x=>({t:'mc',q:x.q,o:x.o,a:x.a,why:'Đối chiếu với lời bài nghe ở mục Luyện nghe.'}));
+  return shuffle([...pick(onQs(n),Math.min(12,onQs(n).length)),...pick(W,8).map((x,i)=>i%2?qWord(x,ALLW):qVocab(x,ALLW)),...pick(nz(W.map(x=>qCloze(x,ALLW))),6),...(n?[]:LQ.slice(0,4).map(x=>({t:'mc',q:x.q,o:x.o,a:x.a,why:'Đối chiếu lời bài nghe.'})))]).slice(0,30)}
+views.quiz=arg=>{const n=arg==null?store.get('eu',0):+arg;store.set('eu',n);const sc=store.get('scores',{});
+  $('#main').innerHTML=`${unitBar(n,'quiz',true)}<h1>Câu hỏi ôn ${n?'Unit '+n:'tất cả Unit'}</h1><p class="sub">Câu hỏi ôn lấy từ bài ôn trên trang trường (chị đã làm), có đáp án. Câu chị làm sai mà chưa rõ đáp án thì em chưa đưa vào. Các dạng còn lại em tự tạo từ bài học.</p>
+  <div class="mocks">${KINDS.map(([k,t,d])=>{const b=sc[k+n];return `<button class="mockb" type="button" data-kind="${k}"><b>${t}</b><small>${d}${b!=null?` · tốt nhất ${b}%`:''}</small></button>`}).join('')}</div>`;
+  $$('[data-kind]').forEach(b=>b.onclick=()=>runTest(b.dataset.kind,n))};
+function runTest(kind,n){const qs=build(kind,n),m=$('#main'),timed=kind==='mix';let left=20*60;
+  if(!qs.length){m.innerHTML='<p class="note">Chưa đủ dữ liệu để tạo đề này.</p><button class="btn" data-go="quiz">Quay lại</button>';return}
+  const title=KINDS.find(k=>k[0]===kind)[1];
+  m.innerHTML=`<button class="link" type="button" data-go="quiz" data-arg="${n}">← Các đề</button>${timed?'<div class="timer" id="tm"><span>Còn</span><b>20:00</b></div>':''}<h1>${title} ${n?'(Unit '+n+')':''}</h1>
+  <div id="qs">${qs.map((q,i)=>`<section class="qb" data-i="${i}"><span class="qn">Câu ${i+1}</span><p class="en">${esc(q.q)}</p><div class="opts">${q.o.map((o,j)=>`<button class="opt" type="button" data-j="${j}" aria-pressed="false">${esc(o)}</button>`).join('')}</div><div class="why hide"></div></section>`).join('')}</div>
+  <p class="row"><button class="btn" id="sub" type="button">Nộp bài</button></p><div id="rs"></div>`;
+  $('#qs').onclick=e=>{const o=e.target.closest('.opt');if(o&&!$('#rs').innerHTML)$$('.opt',o.parentNode).forEach(b=>b.setAttribute('aria-pressed',b===o))};
+  const submit=()=>{clearInterval(window._timer);if($('#rs').innerHTML)return;let ok=0;
+    qs.forEach((q,i)=>{const box=$(`[data-i="${i}"]`),sel=$('.opt[aria-pressed="true"]',box),good=!!sel&&+sel.dataset.j===q.a;$$('.opt',box).forEach((b,j)=>{if(j===q.a)b.classList.add('ok');else if(b===sel)b.classList.add('no')});$('.why',box).textContent=q.why;$('.why',box).classList.remove('hide');if(good)ok++;box.classList.add(good?'isok':'isno')});
+    const pct=Math.round(100*ok/qs.length),sc=store.get('scores',{}),key=kind+n;if(sc[key]==null||pct>sc[key])sc[key]=pct;store.set('scores',sc);
+    $('#rs').innerHTML=`<section class="tstat"><p class="score ${pct>=70?'good':'bad'}">Đúng ${ok}/${qs.length} (${pct}%)</p><p class="note">Câu sai đã đánh dấu đỏ kèm đáp án. Làm lại để ra bộ câu mới.</p><p class="row"><button class="btn" data-go="quiz" data-arg="${n}">Các đề khác</button><button class="btn ghost" id="again" type="button">Làm lại</button></p></section>`;
+    $('#again').onclick=()=>runTest(kind,n);$('#rs').scrollIntoView({behavior:'smooth'})};
+  $('#sub').onclick=submit;
+  if(timed)window._timer=setInterval(()=>{left--;const t=$('#tm');if(t){t.querySelector('b').textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');t.classList.toggle('low',left<=120)}if(left<=0)submit()},1000)}
+
+/* ---------- Luyện nghe ---------- */
+const stem=w=>w.replace(/[^A-Za-z']/g,'');
+function clozeTokens(en,max){const toks=en.split(/(\s+)/),idx=[];toks.forEach((t,j)=>{const w=stem(t);if(w.length>=7&&!idx.some(a=>stem(toks[a]).toLowerCase()===w.toLowerCase()))idx.push(j)});
+  const nb=Math.min(max,idx.length),step=idx.length/nb;return{toks,chosen:new Set(Array.from({length:nb},(_,j)=>idx[Math.floor(j*step)]))}}
+views.listen=()=>{
+  $('#main').innerHTML=`<h1>Luyện nghe</h1><p class="sub">Mỗi bài nghe 3 lần: lần 1 chỉ nghe lấy ý chính, lần 2 điền từ khóa, lần 3 xem lời bài nghe. Giọng đọc là giọng máy của trình duyệt, không phải bản ghi gốc. Lời bài nghe được chép tự động từ video đánh giá của cô, em đã sửa chữ rõ ràng.</p>
+  ${PASSAGES.map((p,i)=>`<section class="card" style="margin:14px 0" data-i="${i}"><h3>${esc(p.title)}</h3>
+   <div class="stage"><button class="chip" type="button" data-st="1" aria-pressed="true">Lần 1: nghe</button><button class="chip" type="button" data-st="2" aria-pressed="false">Lần 2: điền từ</button><button class="chip" type="button" data-st="3" aria-pressed="false">Lần 3: đối chiếu</button></div>
+   <p class="row" style="margin:6px 0"><button class="btn ghost" type="button" data-play>🔊 Nghe</button><button class="btn ghost" type="button" data-stop>Dừng</button></p>
+   <div class="p1"><p class="note">Nghe và tự hỏi: mấy người nói, nói về chuyện gì, cảm xúc ra sao.</p>${LQ.some(q=>q.p===p.id)?`<div class="qzs"></div>`:''}</div><div class="p2 hide"></div><div class="p3 hide"><p class="en">${esc(p.text)}</p></div></section>`).join('')}`;
+  PASSAGES.forEach((p,i)=>{const box=$(`[data-i="${i}"]`);
+    const c=clozeTokens(p.text,10);
+    $('.p2',box).innerHTML=`<p class="note">Nghe lại và điền từ còn thiếu:</p><p class="en">${c.toks.map((t,j)=>c.chosen.has(j)?`<input class="blank" data-a="${esc(stem(t))}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Từ cần điền">${esc(t.replace(stem(t),''))}`:esc(t)).join('')}</p><p class="row"><button class="btn" type="button" data-chk>Kiểm tra</button></p><p class="note res"></p>`;
+    const qz=$('.qzs',box);if(qz)qz.innerHTML=LQ.filter(q=>q.p===p.id).map(q=>`<div class="qb"><p class="en">${esc(q.q)}</p><div class="opts">${q.o.map((o,j)=>`<button class="opt" type="button" data-ok="${j===q.a?1:0}">${esc(o)}</button>`).join('')}</div></div>`).join('');
+    box.onclick=e=>{const t=e.target;
+      if(t.dataset.play!=null)speak(p.text);if(t.dataset.stop!=null){try{speechSynthesis.cancel();speakId++}catch(x){}}
+      if(t.dataset.st){$$('[data-st]',box).forEach(b=>b.setAttribute('aria-pressed',b===t));['1','2','3'].forEach(s=>$('.p'+s,box).classList.toggle('hide',s!==t.dataset.st))}
+      if(t.classList.contains('opt')&&t.dataset.ok!=null){$$('.opt',t.parentNode).forEach(b=>{b.classList.remove('ok','no');if(b.dataset.ok==='1')b.classList.add('ok')});if(t.dataset.ok!=='1')t.classList.add('no')}
+      if(t.dataset.chk!=null){let ok=0;const bl=$$('.blank',box);bl.forEach(b=>{const g=b.value.trim().toLowerCase()===b.dataset.a.toLowerCase();b.classList.remove('ok','no');b.classList.add(g?'ok':'no');if(g)ok++});$('.res',box).textContent=`Đúng ${ok}/${bl.length}. Chỗ sai thì xem lần 3 rồi thử lại.`}}})};
+
+/* ---------- Key Points ---------- */
+views.key=arg=>{const n=+arg||store.get('ku',1);store.set('ku',n);const u=UNITS[n-1];
+  $('#main').innerHTML=`${unitBar(n,'key')}<h1>Key Points Unit ${n}: ${esc(u.title)}</h1><p class="sub">${esc(u.vi)}. Bản rút gọn đọc trước giờ thi. <button class="link noprint" type="button" onclick="window.print()">In trang này</button></p>
+  <div class="learn"><section class="card"><h3>Câu hỏi của Unit</h3><p class="en">${esc(u.q)}</p></section>
+  <section class="card"><h3>Kỹ năng và ngữ pháp</h3><ul class="kp">${u.skills.map(r=>`<li><b>${esc(r[0])}</b></li>`).join('')}</ul></section>
+  <section class="card"><h3>Từ vựng</h3><ul class="kp">${u.vocab.map(r=>`<li><span class="en">${esc(r[0])}</span> <span class="ipa">${esc(r[1])}</span> <span class="vi">${esc(r[3])}</span></li>`).join('')}</ul></section>
+  <section class="card"><h3>Nội dung bài nghe</h3><ul class="kp">${u.key.map(r=>`<li><b>${esc(r[0])}</b><span class="vi">${esc(r[1])}</span></li>`).join('')}</ul></section></div>`};
+
+document.addEventListener('click',e=>{const s=e.target.closest('[data-say]');if(s){speak(s.dataset.say);return}
+  const g=e.target.closest('[data-go]');if(g&&g.tagName!=='NAV'){e.preventDefault();window._pendq=g.dataset.q!=null?+g.dataset.q:null;go(g.dataset.go,g.dataset.arg===''?undefined:g.dataset.arg)}});
+header();go((location.hash||'').slice(1)||store.get('view','home'));
+</script>
+</body></html>
