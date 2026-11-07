@@ -91,6 +91,7 @@ textarea{font-family:var(--read);line-height:1.6;background-image:repeating-line
 .hide{display:none!important}
 .big-t{font:700 40px var(--ui);font-variant-numeric:tabular-nums;color:var(--blue)}
 .big-t.low{color:var(--red)}
+.apbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}.apbar .btn{padding:6px 10px;font-size:14px}.aprate{font-size:14px;display:flex;gap:4px;align-items:center}.aprate select{font:inherit;padding:3px}.snt{cursor:pointer;border-radius:4px}.snt:hover{background:rgba(120,160,255,.18)}.snt.cur{background:rgba(255,200,0,.4)}.aptext.hide{display:none}
 .sample{background:var(--blue-soft);border-radius:8px;padding:10px 14px;margin:8px 0}
 .warn{background:var(--red-soft);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14.5px}
 .rng{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;margin:6px 0}
@@ -513,8 +514,48 @@ const store=(()=>{let d={};try{d=JSON.parse(localStorage.getItem(KEY)||'{}')}cat
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const pick=(a,n)=>shuffle(a).slice(0,n);
 let speakId=0;
-const speak=t=>{try{speechSynthesis.cancel();const my=++speakId;const parts=String(t).split(/(?<=[.?!])\s+/).filter(Boolean);
-  const run=i=>{if(i>=parts.length||my!==speakId)return;const u=new SpeechSynthesisUtterance(parts[i]);u.lang='en-US';u.rate=.92;u.onend=()=>run(i+1);speechSynthesis.speak(u)};run(0)}catch(e){}};
+const MALEV=/david|mark|guy|ryan|george|james|richard|alex|daniel|fred|thomas|brian|christopher|eric|roger|steffan|male/i;
+const FEMV=/zira|aria|jenny|samantha|hazel|susan|libby|sonia|emma|michelle|ana|karen|moira|tessa|victoria|serena|catherine|linda|female/i;
+const setVoice=u=>{const g=store.get('voice','f');let vs=[];try{vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang))}catch(e){}
+  const want=g==='m'?MALEV:FEMV;
+  let v=vs.find(x=>want.test(x.name)&&/en[-_]US/i.test(x.lang))||vs.find(x=>want.test(x.name));
+  if(!v&&g==='f')v=vs.find(x=>!MALEV.test(x.name)&&/en[-_]US/i.test(x.lang));
+  if(v){u.voice=v;u.lang=v.lang}else if(g==='m')u.pitch=.6};
+/* ---------- Trình phát có tua từng câu ---------- */
+const AP={box:null,i:0,id:0,on:false};
+const splitS=t=>String(t).split(/(?<=[.?!])\s+/).filter(Boolean);
+const apSents=b=>[...b.querySelectorAll('.snt')];
+const apMark=()=>{document.querySelectorAll('.snt.cur').forEach(e=>e.classList.remove('cur'));
+  document.querySelectorAll('.ap [data-ap=toggle]').forEach(b=>b.textContent='▶ Nghe');
+  document.querySelectorAll('.apinfo').forEach(e=>e.textContent='');
+  if(!AP.box)return;const ss=apSents(AP.box),c=ss[AP.i];
+  if(c){c.classList.add('cur');if(c.offsetParent)c.scrollIntoView({block:'nearest'})}
+  const inf=AP.box.querySelector('.apinfo');if(inf)inf.textContent='Câu '+(AP.i+1)+'/'+ss.length;
+  const tg=AP.box.querySelector('[data-ap=toggle]');if(tg&&AP.on)tg.textContent='⏸ Tạm dừng'};
+const apPlay=(box,i)=>{try{speechSynthesis.cancel()}catch(e){}
+  const ss=apSents(box);if(!ss.length)return;i=Math.max(0,Math.min(ss.length-1,i));
+  AP.box=box;AP.i=i;AP.on=true;const my=++AP.id;speakId++;
+  const r=box.querySelector('[data-ap=rate]');
+  try{const u=new SpeechSynthesisUtterance(ss[i].textContent.trim());u.lang='en-US';u.rate=r?+r.value:.92;setVoice(u);
+    u.onend=()=>{if(my!==AP.id)return;if(i+1<ss.length)apPlay(box,i+1);else{AP.on=false;AP.i=0;apMark()}};
+    speechSynthesis.speak(u)}catch(e){}
+  apMark()};
+const apPause=()=>{AP.id++;try{speechSynthesis.cancel()}catch(e){}AP.on=false;apMark()};
+const apStop=()=>{AP.id++;try{speechSynthesis.cancel()}catch(e){}AP.on=false;AP.i=0;apMark()};
+const apHTML=(t,hide)=>`<div class="ap"><div class="apbar"><button class="btn ghost" type="button" data-ap="prev">⏮ Câu trước</button><button class="btn" type="button" data-ap="toggle">▶ Nghe</button><button class="btn ghost" type="button" data-ap="next">Câu sau ⏭</button><button class="btn ghost" type="button" data-ap="again">↻ Nghe lại câu này</button><button class="btn ghost" type="button" data-ap="stop">⏹ Dừng</button><label class="aprate">Tốc độ <select data-ap="rate"><option value=".7">Chậm</option><option value=".92" selected>Vừa</option><option value="1.1">Nhanh</option></select></label><label class="aprate">Giọng <select data-ap="voice"><option value="f"${store.get('voice','f')==='f'?' selected':''}>Nữ</option><option value="m"${store.get('voice','f')==='m'?' selected':''}>Nam</option></select></label><span class="apinfo note"></span></div><p class="en aptext${hide?' hide':''}">${splitS(t).map(x=>`<span class="snt" title="Bấm để nghe từ câu này">${esc(x)} </span>`).join('')}</p>${hide?'':'<p class="note">Bấm vào một câu để nghe từ câu đó.</p>'}</div>`;
+document.addEventListener('click',e=>{const sn=e.target.closest('.snt'),bt=e.target.closest('button[data-ap]');
+  const box=(sn||bt)&&(sn||bt).closest('.ap');if(!box)return;const same=AP.box===box,cur=same?AP.i:0;
+  if(sn){apPlay(box,apSents(box).indexOf(sn));return}
+  const a=bt.dataset.ap;
+  if(a==='toggle'){if(same&&AP.on)apPause();else apPlay(box,cur)}
+  else if(a==='prev')apPlay(box,cur-1);
+  else if(a==='next')apPlay(box,cur+1);
+  else if(a==='again')apPlay(box,cur);
+  else if(a==='stop')apStop()});
+document.addEventListener('change',e=>{const vv=e.target.closest('select[data-ap=voice]');if(vv){store.set('voice',vv.value);document.querySelectorAll('select[data-ap=voice]').forEach(x=>x.value=vv.value);const bx=vv.closest('.ap');if(AP.box===bx&&AP.on)apPlay(bx,AP.i);return}const r=e.target.closest('select[data-ap=rate]');if(!r)return;const box=r.closest('.ap');if(AP.box===box&&AP.on)apPlay(box,AP.i)});
+
+const speak=t=>{try{AP.id++;AP.on=false;apMark();speechSynthesis.cancel();const my=++speakId;const parts=String(t).split(/(?<=[.?!])\s+/).filter(Boolean);
+  const run=i=>{if(i>=parts.length||my!==speakId)return;const u=new SpeechSynthesisUtterance(parts[i]);u.lang='en-US';u.rate=.92;setVoice(u);u.onend=()=>run(i+1);speechSynthesis.speak(u)};run(0)}catch(e){}};
 const sayBtn=t=>`<button class="say" type="button" data-say="${esc(t)}" aria-label="Nghe">🔊</button>`;
 
 // Từ vựng mở rộng. Mỗi dòng: từ|phiên âm|loại từ|nghĩa|ví dụ. Nhóm 5 là từ trong đề thi cuối kỳ.
@@ -1085,7 +1126,7 @@ const header=()=>{const tabs=[['home','Lịch ôn'],['final','Đề cuối kỳ'
   $('#tabs').innerHTML=tabs.map(([k,l])=>`<button id="tab-${k}" data-go="${k}" class="tab" type="button">${l}</button>`).join('')};
 function go(v,arg){const name=views[v]?v:'home';store.set('view',name);
   $$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.go===name?'page':'false'));
-  clearInterval(window._timer);window._mockStop&&window._mockStop();try{speechSynthesis.cancel();speakId++}catch(e){}
+  clearInterval(window._timer);window._mockStop&&window._mockStop();AP.id++;AP.on=false;AP.box=null;try{speechSynthesis.cancel();speakId++}catch(e){}
   $('#main').innerHTML='';views[name](arg);window.scrollTo(0,0);try{history.replaceState(null,'','#'+name)}catch(e){}}
 const unitBar=(cur,view,all)=>`<div class="units">${all?`<button class="chip" type="button" data-go="${view}" data-arg="0" aria-pressed="${cur===0}">Tất cả</button>`:''}${UNITS.map(u=>`<button class="chip" type="button" data-go="${view}" data-arg="${u.n}" aria-pressed="${cur===u.n}">Unit ${u.n}</button>`).join('')}${all?`<button class="chip" type="button" data-go="${view}" data-arg="5" aria-pressed="${cur===5}">Đề cuối kỳ</button>`:''}</div>`;
 const tbl=(hdr,rows,cls='')=>`<div class="tw"><table class="${cls}"><thead><tr>${hdr.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
@@ -1104,7 +1145,7 @@ views.home=()=>{const k=known(),nk=ALLW.filter(x=>k[x.w]).length,done=store.get(
 /* ---------- Đề cuối kỳ ---------- */
 const qCard=(x,i,pre,part)=>{const v=VIF[part][i];return `<details class="essay"><summary><span><b>${pre}${i+1}. ${esc(x.q)}</b><span class="vi">${esc(v.q)}</span><small>${esc(x.type)}</small></span></summary>
   <p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ vựng gợi ý:</b> ${esc(x.words)}</p>
-  <div class="seg vtabs">${versOf(part,i).map((s,k)=>`<button class="chip" type="button" data-ver="${k}" aria-pressed="${k===0}">Bản ${k+1}</button>`).join("")}</div>${versOf(part,i).map((s,k)=>`<div class="sample ${k?"hide":""}" data-vb="${k}"><p class="en">${esc(s.a)}</p><p class="vi"><b>Bản tiếng Việt:</b> ${esc(s.v)}</p><p class="row" style="margin:6px 0"><button class="btn ghost" type="button" data-say="${esc(s.a)}">🔊 Nghe bản ${k+1}</button><button class="btn" type="button" data-go="mock" data-arg="${part}" data-q="${i}" data-mver="${k}">🎙 Luyện nói câu này (bản ${k+1})</button></p></div>`).join("")}
+  <div class="seg vtabs">${versOf(part,i).map((s,k)=>`<button class="chip" type="button" data-ver="${k}" aria-pressed="${k===0}">Bản ${k+1}</button>`).join("")}</div>${versOf(part,i).map((s,k)=>`<div class="sample ${k?"hide":""}" data-vb="${k}">${apHTML(s.a)}<p class="vi"><b>Bản tiếng Việt:</b> ${esc(s.v)}</p><p class="row" style="margin:6px 0"><button class="btn" type="button" data-go="mock" data-arg="${part}" data-q="${i}" data-mver="${k}">🎙 Luyện nói câu này (bản ${k+1})</button></p></div>`).join("")}
   <p class="note">Mỗi câu có 3 bản mẫu khác nhau về ý và ví dụ. Bài mẫu để tham khảo cách sắp xếp ý. Khi thi hãy nói bằng ý và ví dụ của chị, đừng học thuộc.</p></details>`};
 views.final=()=>{const showVi=store.get('showVi',true);
   $('#main').innerHTML=`<div class="${showVi?'':'noVi'}" id="fin"><h1>Đề cuối kỳ: thi nói</h1><p class="sub">Theo buổi ôn cuối kỳ của cô. Bộ đề 00 là bộ chính để ôn.</p>
@@ -1113,8 +1154,8 @@ views.final=()=>{const showVi=store.get('showVi',true);
   <h2>Tiêu chí chấm</h2>${tbl(['Tiêu chí','Tỷ lệ','Để đạt 9 đến 10'],FINAL.criteria.map(c=>`<tr><td><b>${esc(c[0])}</b></td><td class="num">${c[1]}</td><td>${esc(c[2])}</td></tr>`))}
   <h2>Quy tắc để lấy điểm cao</h2><section class="card"><ul>${FINAL.rules.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></section>
   <h2>Câu nói hay dùng</h2>${tbl(['Việc cần nói','Cụm từ'],FINAL.phrases.map(p=>`<tr><td><b>${esc(p[0])}</b></td><td class="en">${esc(p[1])}</td></tr>`))}
-  <h2>Phần 1: 8 câu hỏi (bộ 00)</h2><p class="note">Chọn ít nhất 3 câu, mỗi câu khoảng 1 phút. Có dàn ý, bài mẫu tiếng Anh và bản tiếng Việt cho cả 8 câu.</p><div>${FINAL.p1.map((x,i)=>qCard(x,i,'',"p1")).join('')}</div>
-  <h2>Phần 2: 5 chủ đề (bộ 00)</h2><p class="note">Chọn 1 chủ đề, chuẩn bị 1 phút, nói 2 đến 3 phút. Cấu trúc: mở bài 15 đến 20 giây, 2 đến 3 ý chính (mỗi ý có lý do và ví dụ), kết bài 15 đến 20 giây.</p><div>${FINAL.p2.map((x,i)=>qCard(x,i,'',"p2")).join('')}</div>
+  <h2>Cách trả lời Phần 1 (theo thầy)</h2><section class="card"><ol><li><b>Read:</b> nêu số câu và đọc to câu hỏi, ví dụ: <span class="en">I’ll take question 3. Should governments pay people to use less electricity?</span></li><li><b>Point:</b> trả lời thẳng: <span class="en">I think… / In my opinion… / It depends, but…</span></li><li><b>Reason:</b> nêu lý do: <span class="en">The main reason is that… / This is because…</span></li><li><b>Example:</b> ví dụ hoặc hệ quả: <span class="en">For example, in Vietnam… / As a result, …</span></li></ol><p class="note"><b>Mẹo chọn câu:</b> chọn câu có từ vựng và ví dụ thật của mình. Chuẩn bị sẵn 5-6 câu để vào phòng chọn nhanh 3 câu. Câu dạng <i>Should…? / Is… worth…?</i>: nêu quan điểm và thêm một ý ngược lại (<span class="en">However, some people…</span>). Câu dạng <i>Why…? / What…?</i>: nêu 2 lý do rõ ràng. Không trả lời Yes/No cụt, không nói quá 1 phút cho một câu.</p></section><h2>Phần 1: 8 câu hỏi (bộ 00)</h2><p class="note">Chọn ít nhất 3 câu, mỗi câu khoảng 1 phút. Có dàn ý, bài mẫu tiếng Anh và bản tiếng Việt cho cả 8 câu.</p><div>${FINAL.p1.map((x,i)=>qCard(x,i,'',"p1")).join('')}</div>
+  <h2>Cách thuyết trình Phần 2 (theo thầy)</h2><section class="card"><ol><li><b>Đọc to chủ đề, mở bài (15-20 giây):</b> <span class="en">I’d like to talk about… In my view, there are three key points.</span></li><li><b>Ý chính 1 (40-50 giây):</b> luận điểm + lý do + ví dụ</li><li><b>Ý chính 2 (40-50 giây):</b> luận điểm + lý do + ví dụ</li><li><b>Ý chính 3 (40-50 giây):</b> luận điểm + so sánh hoặc hệ quả</li><li><b>Kết (15-20 giây):</b> tóm lại + ý kiến cá nhân: <span class="en">To sum up, … That’s why I believe…</span></li></ol><p class="note">Điểm Giỏi về nội dung: 3-4 luận điểm, mỗi luận điểm có 2-3 ý hỗ trợ.</p></section><h2>Phần 2: 5 chủ đề (bộ 00)</h2><p class="note">Chọn 1 chủ đề, chuẩn bị 1 phút, nói 2 đến 3 phút. Cấu trúc: mở bài 15 đến 20 giây, 2 đến 3 ý chính (mỗi ý có lý do và ví dụ), kết bài 15 đến 20 giây.</p><div>${FINAL.p2.map((x,i)=>qCard(x,i,'',"p2")).join('')}</div>
   <p class="note">Bản tiếng Việt do em dịch để chị nắm ý, không phải bản chính thức của cô.</p>
   <p class="row"><button class="btn" type="button" data-go="mock">Luyện thi nói, thu âm và chấm điểm</button></p></div>`;
   $('#sv').onchange=e=>{store.set('showVi',e.target.checked);$('#fin').classList.toggle('noVi',!e.target.checked)}};
@@ -1412,8 +1453,8 @@ views.listen=()=>{
   $('#main').innerHTML=`<h1>Luyện nghe</h1><p class="sub">Mỗi bài nghe 3 lần: lần 1 chỉ nghe lấy ý chính, lần 2 điền từ khóa, lần 3 xem lời bài nghe. Giọng đọc là giọng máy của trình duyệt, không phải bản ghi gốc. Lời bài nghe được chép tự động từ video đánh giá của cô, em đã sửa chữ rõ ràng.</p>
   ${PASSAGES.map((p,i)=>`<section class="card" style="margin:14px 0" data-i="${i}"><h3>${esc(p.title)}</h3>
    <div class="stage"><button class="chip" type="button" data-st="1" aria-pressed="true">Lần 1: nghe</button><button class="chip" type="button" data-st="2" aria-pressed="false">Lần 2: điền từ</button><button class="chip" type="button" data-st="3" aria-pressed="false">Lần 3: đối chiếu</button></div>
-   <p class="row" style="margin:6px 0"><button class="btn ghost" type="button" data-play>🔊 Nghe</button><button class="btn ghost" type="button" data-stop>Dừng</button></p>
-   <div class="p1"><p class="note">Nghe và tự hỏi: mấy người nói, nói về chuyện gì, cảm xúc ra sao.</p>${LQ.some(q=>q.p===p.id)?`<div class="qzs"></div>`:''}</div><div class="p2 hide"></div><div class="p3 hide"><p class="en">${esc(p.text)}</p></div></section>`).join('')}`;
+   ${apHTML(p.text,true)}
+   <div class="p1"><p class="note">Nghe và tự hỏi: mấy người nói, nói về chuyện gì, cảm xúc ra sao.</p>${LQ.some(q=>q.p===p.id)?`<div class="qzs"></div>`:''}</div><div class="p2 hide"></div><div class="p3 hide">${apHTML(p.text,false)}</div></section>`).join('')}`;
   PASSAGES.forEach((p,i)=>{const box=$(`[data-i="${i}"]`);
     const c=clozeTokens(p.text,10);
     $('.p2',box).innerHTML=`<p class="note">Nghe lại và điền từ còn thiếu:</p><p class="en">${c.toks.map((t,j)=>c.chosen.has(j)?`<input class="blank" data-a="${esc(stem(t))}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Từ cần điền">${esc(t.replace(stem(t),''))}`:esc(t)).join('')}</p><p class="row"><button class="btn" type="button" data-chk>Kiểm tra</button></p><p class="note res"></p>`;
