@@ -124,6 +124,10 @@ details.essay>summary:hover{background:rgba(255,159,28,.18)}
 .apbar [data-ap=step]+*,.apbar label.toggle{background:rgba(29,155,240,.1);border-radius:8px;padding:4px 8px}
 button[data-go=mock][data-q],button[data-rec]{background:linear-gradient(135deg,#ff5e62,#ff9f1c);color:#fff;border:0;font-weight:700;box-shadow:0 3px 10px rgba(255,94,98,.35)}
 #go{background:linear-gradient(135deg,#e63946,#ff7a45);color:#fff;border:0;font-size:18px;padding:12px 26px;box-shadow:0 4px 14px rgba(230,57,70,.45);animation:pulseBtn 2s ease-in-out infinite}
+.qbox{background:linear-gradient(135deg,rgba(255,159,28,.2),rgba(255,94,98,.14));border:2px solid #ff9f1c;border-left:8px solid #e63946;border-radius:10px;padding:8px 12px;margin:10px 0}
+.qbox .qtag{display:inline-block;background:#e63946;color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.5px;padding:2px 10px;border-radius:999px;margin-bottom:4px}
+.qbox .ap>.apbar:nth-of-type(n+2),.qbox .ap>p.note{display:none}
+.qbox .aptext{font-size:19px;font-weight:700}
 .seg .chip[data-m]{border:2px solid #1d9bf0;font-size:16px;font-weight:700;padding:10px 16px}
 .seg .chip[data-m=read]{background:linear-gradient(135deg,#7b2ff7,#f107a3);color:#fff;border:0;box-shadow:0 4px 14px rgba(241,7,163,.45);animation:pulseBtn 2s ease-in-out infinite}
 .seg .chip[data-m=read][aria-pressed=true]{outline:3px solid #ffd60a;outline-offset:2px}
@@ -1158,8 +1162,9 @@ views.home=()=>{const k=known(),nk=ALLW.filter(x=>k[x.w]).length,done=store.get(
   $$('[data-day]').forEach(c=>c.onchange=()=>{const d=store.get('days',{});d[c.dataset.day]=c.checked;store.set('days',d);views.home()})};
 
 /* ---------- Đề cuối kỳ ---------- */
+const qBox=x=>`<div class="qbox"><span class="qtag">❓ CÂU HỎI ĐỀ</span>${apHTML(x.q,false,null,false,0,[x.vi],true)}</div>`;
 const qCard=(x,i,pre,part)=>`<details class="essay"><summary><span><b>${pre}${i+1}. ${esc(x.q)}</b><span class="ipa2 qi">/${esc(ipaS(x.q))}/</span><span class="vi">${esc(x.vi)}</span><small>${esc(x.type)}</small></span></summary>
-  <p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ vựng gợi ý:</b> ${esc(x.words)}</p>
+  ${qBox(x)}<p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ vựng gợi ý:</b> ${esc(x.words)}</p>
   <div class="seg vtabs">${x.vers.map((s,k)=>`<button class="chip" type="button" data-ver="${k}" aria-pressed="${k===0}">Bản ${k+1}</button>`).join("")}</div>${x.vers.map((s,k)=>`<div class="sample ${k?"hide":""}" data-vb="${k}">${apHTML(s.a,false,null,false,0,alignVi(s.a,s.v),true)}${alignVi(s.a,s.v)?'':`<p class="vi"><b>Bản tiếng Việt:</b> ${esc(s.v)}</p>`}<p class="row" style="margin:6px 0"><button class="btn" type="button" data-go="mock" data-arg="${part}" data-q="${i}" data-mver="${k}">🎙 Luyện nói câu này (bản ${k+1})</button></p></div>`).join("")}
   <p class="note">Mỗi câu có 5 bản mẫu khác nhau về ý và ví dụ, viết bằng tiếng Anh B1 dễ nhớ. Chọn bản hợp với chị nhất rồi nói bằng ý và ví dụ của chị, đừng học thuộc.</p></details>`;
 
@@ -1328,7 +1333,7 @@ function session(box,x,part,qi){
   let stage=prep?'prep':'ready',t=prep,rec=null,stream=null,chunks=[],sr=null,srFatal='',tick=null,lvt=null,startAt=0,mtr=null,levels=[],segs=[],interim='',srDone=null;
   const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(Math.floor(s%60)).padStart(2,'0');
   const hideOut=store.get('hideOut',false);
-  box.innerHTML=`<section class="card"><h3>${esc(x.q)}</h3><span class="vi">${esc(x.vi)}</span>
+  box.innerHTML=`<section class="card">${qBox(x)}
    <div class="seg"><button class="chip" type="button" data-m="free" aria-pressed="${!read}">Nói tự do (như thi thật)</button><button class="chip" type="button" data-m="read" aria-pressed="${read}">🎯 Đọc theo bài mẫu: máy chỉ chỗ sai</button></div>
    ${read?`<p class="note">Chị đọc to cả bài mẫu bên dưới. Máy nghe từng từ, so với bài mẫu, rồi tô <span class="w-ok">xanh</span> chỗ đúng, <span class="w-bad">đỏ</span> chỗ sai, <span class="w-miss">gạch ngang</span> chỗ bỏ sót.</p><div class="seg">${vers.map((s,k)=>`<button class="chip" type="button" data-v="${k}" aria-pressed="${k===ver}">Bản ${k+1}</button>`).join("")}</div><div class="sample"><p class="pr-sent" id="refx">${esc(refText)}</p><p class="vi">${esc(vers[ver].v)}</p><details class="noprint" style="margin:8px 0"><summary><b>🔊 Nghe giọng mẫu trước</b> (bấm vào một chữ ở bài mẫu để nghe lại chữ đó)</summary>${apHTML(refText,true,'refx')}</details></div>`
    :`<label class="toggle noprint"><input type="checkbox" id="ho" ${hideOut?'checked':''}> Giấu dàn ý và từ gợi ý (như thi thật)</label><div id="hint" class="${hideOut?'hide':''}"><p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ gợi ý:</b> ${esc(x.words)}</p></div>
