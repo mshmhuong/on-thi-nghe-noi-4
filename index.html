@@ -1235,12 +1235,14 @@ const GRAM=[
 const ADV=new Set([...ALLW.map(x=>x.w.toLowerCase()),...['recognition','incentive','incentives','rotation','burnout','purpose','repetitive','meaningful','donate','volunteer','awareness','guarantee','reliable','storage','renewable','credibility','innovation','adopt','infrastructure','affordable','ethical','deceive','misleading','exaggerate','boundary','productive','flexible','bureaucracy','funding','observe','concentrate','pollution','investment','long-term','appearance','impression','consumers','responsibility','effective','convenient','advantage','disadvantage','significant','essential','particularly','generally','therefore','however','although','whereas','compared','balance','environment','community','policy','potential']]);
 const LINK={opinion:/\b(i think|i believe|in my opinion|i would say|i'd say|i agree|i disagree|to be honest|i feel)\b/,reason:/\b(one reason|another reason|first of all|firstly|secondly|second|third|the first|because|since|there are (two|three)|the main reason)\b/,example:/\b(for example|for instance|such as|take my|what i mean)\b/,contrast:/\b(on the other hand|however|although|while|whereas|compared with|but)\b/,conclusion:/\b(overall|in conclusion|to conclude|in the long run|finally|in short|to sum up|that's all)\b/};
 const clamp=(v,a=1,b=10)=>Math.max(a,Math.min(b,v)),r1=v=>Math.round(v*10)/10;
+/* Chấm chặt: kéo điểm cao xuống, và trừ thêm nếu có tiêu chí yếu */
+const strict=v=>1+9*Math.pow(Math.max(0,Math.min(1,(v-1)/9)),1.5),totalOf=a=>{const m=a.reduce((x,y)=>x+y,0)/a.length,lo=Math.min(...a);return r1(clamp(m-.3*Math.max(0,m-lo)))};
 
 /* Chấm khi nói tự do: ước lượng 4 tiêu chí của cô, mỗi tiêu chí 25% */
 function scoreFree(o){const heard=o.heard.trim(),T=toks(heard),n=T.length,secs=Math.max(1,o.secs),au=o.au,x=o.x,goal=o.goal;
   const out={fix:[],crit:[],n,wpm:Math.round(n*60/secs)};const pauses=au&&au.pauses?au.pauses:[];out.pauses=pauses;
   /* Trôi chảy */
-  let fl=10,fn=[];if(pauses.length>2){fl-=Math.min(5,.8*(pauses.length-2));fn.push(`${pauses.length} chỗ ngập ngừng từ 1,2 giây (cô cho 9 đến 10 điểm nếu chỉ 1 đến 2 lần)`)}else fn.push(`chỉ ${pauses.length} chỗ ngập ngừng`);
+  let fl=10,fn=[];if(pauses.length>1){fl-=Math.min(5,1*(pauses.length-1));fn.push(`${pauses.length} chỗ ngập ngừng từ 1,2 giây (cô cho 9 đến 10 điểm nếu chỉ 1 đến 2 lần)`)}else fn.push(`chỉ ${pauses.length} chỗ ngập ngừng`);
   if(n){if(out.wpm<80){fl-=Math.min(3,(80-out.wpm)/15);fn.push(`nói hơi chậm (${out.wpm} từ/phút)`)}else if(out.wpm>180){fl-=Math.min(2,(out.wpm-180)/25);fn.push(`nói hơi nhanh (${out.wpm} từ/phút)`)}else fn.push(`tốc độ ${out.wpm} từ/phút`)}
   if(secs<goal[0]){fl-=Math.min(3.5,(goal[0]-secs)/goal[0]*5);fn.push(`mới nói ${secs} giây, mục tiêu ${goal[0]} đến ${goal[1]} giây`)}
   const fills=(heard.toLowerCase().match(/\b(um|uh|er|erm|hmm|you know|i mean)\b/g)||[]).length;if(fills){fl-=Math.min(2,.4*fills);fn.push(`${fills} tiếng đệm`)}
@@ -1250,7 +1252,7 @@ function scoreFree(o){const heard=o.heard.trim(),T=toks(heard),n=T.length,secs=M
   /* Phát âm: độ tự tin của máy + các từ máy nghe không chắc */
   let cw=0,cs=0;const unsure=[];(o.segs||[]).forEach(sg=>{const w=sg.text.trim().split(/\s+/).filter(Boolean).length;if(sg.conf>0){cw+=w;cs+=w*sg.conf}(sg.unsure||[]).forEach(u=>unsure.push(u))});
   const conf=cw?cs/cw:null,uset=[...new Set(unsure.map(u=>u.toLowerCase()))];out.conf=conf;out.unsure=uset;
-  let pr=null,pn='';if(conf!=null){pr=1+9*clamp((conf-.5)/.42,0,1);pr-=Math.min(2,uset.length/n*8);pn=`máy hiểu đúng khoảng ${Math.round(conf*100)}% lời chị nói`+(uset.length?`; ${uset.length} từ máy nghe chưa chắc`:'')}else pn='máy không cho điểm tin cậy';
+  let pr=null,pn='';if(conf!=null){pr=1+9*clamp((conf-.6)/.38,0,1);pr-=Math.min(3,uset.length/n*12);pn=`máy hiểu đúng khoảng ${Math.round(conf*100)}% lời chị nói`+(uset.length?`; ${uset.length} từ máy nghe chưa chắc`:'')}else pn='máy không cho điểm tin cậy';
   out.crit.push({k:'Pronunciation (phát âm)',s:pr==null?null:r1(clamp(pr)),note:pn});
   if(uset.length)out.fix.push({t:`Từ máy nghe chưa chắc: ${uset.slice(0,12).join(', ')}`,words:uset.slice(0,12),tip:'Bấm loa nghe cách đọc đúng, đọc lại từng từ rồi nói cả câu.'});
   /* Nội dung */
@@ -1276,6 +1278,7 @@ function scoreFree(o){const heard=o.heard.trim(),T=toks(heard),n=T.length,secs=M
   errs.forEach(e=>out.fix.push({t:`Ngữ pháp: “${e.m}”`,tip:e.msg}));
   if(copied)out.fix.push({t:'Lặp lại gần nguyên câu hỏi',tip:'Cô dặn đừng lặp lại câu hỏi. Diễn đạt lại bằng từ khác rồi trả lời thẳng.'});
   if(advR<.12)out.fix.push({t:`Từ vựng còn đơn giản (${Math.round(advR*100)}% từ khá khó)`,tip:'Thêm từ nâng cao trong ô Từ vựng gợi ý của câu này.'});
+  out.crit.forEach(c=>{if(c.s!=null)c.s=r1(clamp(strict(c.s)))});
   return out}
 
 /* Chấm khi đọc theo bài mẫu: so từng từ máy nghe được với bài mẫu */
@@ -1377,8 +1380,8 @@ function session(box,x,part,qi){
     if(!SR||srFatal||!heard.trim()){const why=!SR?'Trình duyệt này không có chép lời (dùng Chrome hoặc Edge).':srFatal==='network'?'Chép lời cần Internet mà máy đang không có mạng.':srFatal==='blocked'?'Chép lời bị chặn quyền.':'Máy không nghe ra chữ nào. Kiểm tra micro, nói to hơn và gần micro hơn.';
       body=`<p class="score bad">Chưa chấm chữ được. ${why}</p>${audioH}${strip}<p class="note">Độ dài: ${secs} giây${au&&au.pauses?`, ${au.pauses.length} chỗ ngập ngừng`:''}. Chị nghe lại rồi tự chấm 4 tiêu chí.</p>${selfGrade()}`}
     else if(read){const r=scoreRead({ref:refText,heard}),wpm=Math.round(r.H.length*60/secs),pa=au&&au.pauses?au.pauses:[];
-      let fl=10;fl-=Math.min(5,.8*Math.max(0,pa.length-2));if(wpm<80)fl-=Math.min(3,(80-wpm)/15);if(wpm>180)fl-=Math.min(2,(wpm-180)/25);
-      const pron=clamp(r.accSeen*10+.3),cov=clamp(r.N?(r.N-r.miss)/r.N*10:1),flS=clamp(fl);total=r1((pron+flS+cov)/3);
+      let fl=10;fl-=Math.min(5,1*Math.max(0,pa.length-1));if(wpm<80)fl-=Math.min(3,(80-wpm)/15);if(wpm>180)fl-=Math.min(2,(wpm-180)/25);
+      const pron=clamp(strict(clamp(Math.pow(r.accSeen,2)*10))),cov=clamp(strict(clamp(r.N?(r.N-r.miss)/r.N*10:1))),flS=clamp(strict(clamp(fl)));total=totalOf([pron,flS,cov]);
       const bads=[];r.dispS.forEach((s,i)=>{if(s.k==='s'||s.k==='c')bads.push({w:r.refDisp[i].replace(/[^A-Za-z'’-]/g,''),h:s.h,k:s.k})});const seen=new Set(),bl=bads.filter(b=>b.w&&!seen.has(b.w.toLowerCase())&&seen.add(b.w.toLowerCase()));
       const sent=r.refDisp.map((w,i)=>{const s=r.dispS[i];const c=s.k==='m'?'w-ok':s.k==='c'?'w-close':s.k==='s'?'w-bad':'w-miss';return`<span class="${c}"${s.h?` title="Máy nghe thành: ${esc(s.h)}"`:''}>${esc(w)}</span>`}).join(' ');
       body=`<div class="pr-res"><div class="pr-pct ${r.accSeen>=.85?'good':'bad'}">${Math.round(r.accSeen*100)}% đúng</div><p class="note">${r.ok} từ đúng, ${r.cl} gần đúng (có thể sai âm cuối), ${r.bad} từ sai, ${r.miss} từ bỏ sót${r.tail?` (trong đó ${r.tail} từ ở cuối bài, chị chưa đọc tới)`:''}, ${r.extra} từ thêm.</p>
@@ -1386,9 +1389,9 @@ function session(box,x,part,qi){
        ${bl.length?`<h4>Từ cần luyện lại</h4><ul class="pr-fix">${bl.slice(0,15).map(b=>`<li>${sayBtn(b.w)} <b class="en">${esc(b.w)}</b><small>máy nghe thành “${esc(b.h)}”${b.k==='c'?' (gần đúng, xem lại âm cuối -s, -ed, -ing)':''}</small></li>`).join('')}</ul>`:'<p class="score good">Không có từ nào sai. Đọc rất tốt.</p>'}
        <h4>Điểm đọc theo bài mẫu</h4>${critBars([{k:'Pronunciation (đọc đúng từ)',s:r1(pron),note:`${Math.round(r.accSeen*100)}% từ khớp bài mẫu`},{k:'Fluency (trôi chảy)',s:r1(flS),note:`${pa.length} chỗ ngập ngừng, ${wpm} từ/phút`},{k:'Đọc đủ bài',s:r1(cov),note:`bỏ sót ${r.miss}/${r.N} từ`}])}
        <p class="score">Điểm đọc: ${total}/10</p>${audioH}${strip}<p class="note">Máy chép lời có thể nghe nhầm một vài từ dù chị đọc đúng. Nghe lại để chắc chắn, nhất là với từ đỏ.</p></div>`}
-    else{const r=scoreFree({heard,segs,au,secs,x:xs,goal}),sc=r.crit.filter(c=>c.s!=null);total=r1(sc.reduce((a,c)=>a+c.s,0)/sc.length);
+    else{const r=scoreFree({heard,segs,au,secs,x:xs,goal}),sc=r.crit.filter(c=>c.s!=null);total=totalOf(sc.map(c=>c.s));
       const tx=segs.map(sg=>{const un=new Set((sg.unsure||[]).map(u=>u.toLowerCase()));return sg.text.trim().split(/\s+/).map(w=>un.has(simple(w))?`<span class="w-bad">${esc(w)}</span>`:esc(w)).join(' ')}).join(' ');
-      body=`<div class="pr-res"><div class="pr-pct ${total>=7?'good':'bad'}">${total}/10</div><p class="note">Điểm ước lượng theo 4 tiêu chí của cô (mỗi tiêu chí 25%). Máy chấm tham khảo, không thay giám khảo.</p>${critBars(r.crit)}
+      body=`<div class="pr-res"><div class="pr-pct ${total>=7.5?'good':'bad'}">${total}/10</div><p class="note">Điểm ước lượng theo 4 tiêu chí của cô (mỗi tiêu chí 25%). Máy chấm chặt hơn giám khảo một chút, có trừ thêm nếu một tiêu chí yếu. Máy chấm tham khảo, không thay giám khảo.</p>${critBars(r.crit)}
        ${r.fix.length?`<h4>Chỗ cần sửa</h4><ul class="pr-fix">${r.fix.map(f=>`<li>${f.seek!=null?`<button class="link" type="button" data-seek="${f.seek}">▶ nghe</button>`:''}<b>${esc(f.t)}</b>${(f.words||[]).map(w=>sayBtn(w)).join('')}<small>${esc(f.tip)}</small></li>`).join('')}</ul>`:'<p class="score good">Chưa thấy chỗ nào cần sửa nổi bật.</p>'}
        <h4>Chữ máy nghe được</h4><p class="en">${tx}</p><p class="note">Từ gạch đỏ là chỗ máy nghe chưa chắc, có thể chị phát âm chưa rõ.</p>${audioH}${strip}</div>`}
     $('#res').innerHTML=body;
@@ -1407,7 +1410,7 @@ function unsureWords(sg){const dw=sg.text.trim().split(/\s+/).filter(Boolean),sw
   (sg.alts||[]).forEach(a=>{const aw=a.trim().split(/\s+/).filter(Boolean).map(simple);align(sw,aw).forEach(p=>{if(p.r!=null&&(p.k==='d'||p.k===2))flag.add(p.r)})});
   const short=new Set('a an the of to in on at is are was and or it i we you he she they my'.split(' '));
   return[...flag].map(i=>sw[i]).filter(w=>w&&w.length>2&&!short.has(w))}
-const critBars=a=>`<div class="crit">${a.map(c=>`<div class="rng"><span><b>${esc(c.k)}</b><small class="note" style="display:block">${esc(c.note)}</small></span><b class="num ${c.s==null?'':c.s>=7?'good':'bad'}">${c.s==null?'-':c.s}</b><div class="bar" style="grid-column:1/-1"><i style="width:${c.s==null?0:c.s*10}%"></i></div></div>`).join('')}</div>`;
+const critBars=a=>`<div class="crit">${a.map(c=>`<div class="rng"><span><b>${esc(c.k)}</b><small class="note" style="display:block">${esc(c.note)}</small></span><b class="num ${c.s==null?'':c.s>=7.5?'good':'bad'}">${c.s==null?'-':c.s}</b><div class="bar" style="grid-column:1/-1"><i style="width:${c.s==null?0:c.s*10}%"></i></div></div>`).join('')}</div>`;
 const selfGrade=()=>`<h4>Tự chấm (mỗi tiêu chí 25%)</h4>${['Fluency (trôi chảy)','Pronunciation (phát âm)','Content (ý và ví dụ)','Vocabulary and grammar'].map((l,i)=>`<div class="rng"><label for="r${i}">${l}</label><b id="v${i}">7</b><input id="r${i}" type="range" min="1" max="10" value="7"></div>`).join('')}<p class="score" id="tot">Điểm tự chấm: 7.0</p>`;
 
 /* ---------- Bài học ---------- */
