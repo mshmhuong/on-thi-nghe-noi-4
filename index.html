@@ -124,7 +124,10 @@ details.essay>summary:hover{background:rgba(255,159,28,.18)}
 .apbar [data-ap=step]+*,.apbar label.toggle{background:rgba(29,155,240,.1);border-radius:8px;padding:4px 8px}
 button[data-go=mock][data-q],button[data-rec]{background:linear-gradient(135deg,#ff5e62,#ff9f1c);color:#fff;border:0;font-weight:700;box-shadow:0 3px 10px rgba(255,94,98,.35)}
 #go{background:linear-gradient(135deg,#e63946,#ff7a45);color:#fff;border:0;font-size:18px;padding:12px 26px;box-shadow:0 4px 14px rgba(230,57,70,.45);animation:pulseBtn 2s ease-in-out infinite}
-.seg .chip[data-m]{border:2px solid #1d9bf0}
+.seg .chip[data-m]{border:2px solid #1d9bf0;font-size:16px;font-weight:700;padding:10px 16px}
+.seg .chip[data-m=read]{background:linear-gradient(135deg,#7b2ff7,#f107a3);color:#fff;border:0;box-shadow:0 4px 14px rgba(241,7,163,.45);animation:pulseBtn 2s ease-in-out infinite}
+.seg .chip[data-m=read][aria-pressed=true]{outline:3px solid #ffd60a;outline-offset:2px}
+.seg .chip[data-m=free][aria-pressed=true]{background:#1d9bf0;color:#fff}
 .viopt .toggle{background:rgba(47,182,124,.14);border-radius:8px;padding:4px 10px;font-weight:600}
 </style>
 <header><div class="top"><span class="brand">Ôn thi Nghe Nói 4</span><nav id="tabs" aria-label="Các mục"></nav></div></header>
@@ -1326,7 +1329,7 @@ function session(box,x,part,qi){
   const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(Math.floor(s%60)).padStart(2,'0');
   const hideOut=store.get('hideOut',false);
   box.innerHTML=`<section class="card"><h3>${esc(x.q)}</h3><span class="vi">${esc(x.vi)}</span>
-   <div class="seg"><button class="chip" type="button" data-m="free" aria-pressed="${!read}">Nói tự do (như thi thật)</button><button class="chip" type="button" data-m="read" aria-pressed="${read}">Đọc theo bài mẫu (máy chỉ chỗ sai)</button></div>
+   <div class="seg"><button class="chip" type="button" data-m="free" aria-pressed="${!read}">Nói tự do (như thi thật)</button><button class="chip" type="button" data-m="read" aria-pressed="${read}">🎯 Đọc theo bài mẫu: máy chỉ chỗ sai</button></div>
    ${read?`<p class="note">Chị đọc to cả bài mẫu bên dưới. Máy nghe từng từ, so với bài mẫu, rồi tô <span class="w-ok">xanh</span> chỗ đúng, <span class="w-bad">đỏ</span> chỗ sai, <span class="w-miss">gạch ngang</span> chỗ bỏ sót.</p><div class="seg">${vers.map((s,k)=>`<button class="chip" type="button" data-v="${k}" aria-pressed="${k===ver}">Bản ${k+1}</button>`).join("")}</div><div class="sample"><p class="pr-sent" id="refx">${esc(refText)}</p><p class="vi">${esc(vers[ver].v)}</p><details class="noprint" style="margin:8px 0"><summary><b>🔊 Nghe giọng mẫu trước</b> (bấm vào một chữ ở bài mẫu để nghe lại chữ đó)</summary>${apHTML(refText,true,'refx')}</details></div>`
    :`<label class="toggle noprint"><input type="checkbox" id="ho" ${hideOut?'checked':''}> Giấu dàn ý và từ gợi ý (như thi thật)</label><div id="hint" class="${hideOut?'hide':''}"><p class="note"><b>Dàn ý:</b> ${esc(x.out)}</p><p class="note"><b>Từ gợi ý:</b> ${esc(x.words)}</p></div>
    <details class="noprint" style="margin:8px 0"><summary><b>🔊 Nghe bài mẫu</b> (Bản ${ver+1}, có phiên âm và bản dịch từng câu)</summary>${optBar(true)}${apHTML(refText,false,null,false,0,alignVi(refText,vers[ver].v),true)}${alignVi(refText,vers[ver].v)?'':`<p class="vi2 blk"><b>Bản tiếng Việt:</b> ${esc(vers[ver].v)}</p>`}</details>
